@@ -5,9 +5,27 @@
 
     // Demo accounts
     const accounts = [
-        { username: 'admin', password: '123456', role: 'admin', name: 'Quản trị viên' },
-        { username: 'manager', password: '123456', role: 'manager', name: 'Quản lý' },
-        { username: 'user', password: '123456', role: 'user', name: 'Nhân viên' }
+        { 
+            username: 'admin', 
+            password: '123456', 
+            role: 'admin', 
+            name: 'Quản trị viên',
+            employeeId: null
+        },
+        { 
+            username: 'user1', 
+            password: '123456', 
+            role: 'user', 
+            name: 'Nguyễn Văn A',
+            employeeId: 'NV001'
+        },
+        { 
+            username: 'user2', 
+            password: '123456', 
+            role: 'user', 
+            name: 'Trần Thị B',
+            employeeId: 'NV002'
+        }
     ];
 
     // DOM Elements
@@ -81,6 +99,7 @@
             username: user.username,
             role: user.role,
             name: user.name,
+            employeeId: user.employeeId,
             loginTime: new Date().toISOString()
         }));
 
@@ -94,9 +113,14 @@
         // Show success message
         showSuccess('Đăng nhập thành công! Đang chuyển hướng...');
 
-        // Redirect to dashboard after delay
+        // Redirect based on role
         setTimeout(() => {
-            window.location.href = 'index.html';
+            if (user.role === 'admin') {
+                window.location.href = 'index.html';
+            } else {
+                // User role: redirect to own profile
+                window.location.href = `nhan-vien-infor.html?id=${user.employeeId || user.username}`;
+            }
         }, 1000);
     }
 

@@ -118,6 +118,32 @@
                                     </div>
                                 </div>
                             </div>
+
+                            <!-- Mức Năng Lực Hiện Tại -->
+                            <div class="bg-white dark:bg-[#1a222c] rounded-xl shadow-sm p-6">
+                                <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-4">Mức Năng Lực Hiện Tại</h3>
+                                <div class="flex flex-col items-center">
+                                    <div class="relative w-32 h-32 mb-4">
+                                        <svg class="w-full h-full transform -rotate-90">
+                                            <circle cx="64" cy="64" r="56" stroke="currentColor" 
+                                                stroke-width="8" fill="none" 
+                                                class="text-gray-200 dark:text-gray-700"></circle>
+                                            <circle cx="64" cy="64" r="56" stroke="currentColor" 
+                                                stroke-width="8" fill="none" 
+                                                stroke-dasharray="351.86" 
+                                                stroke-dashoffset="87.96"
+                                                class="text-blue-600 dark:text-blue-400 transition-all duration-500"></circle>
+                                        </svg>
+                                        <div class="absolute inset-0 flex items-center justify-center">
+                                            <span class="text-3xl font-bold text-gray-900 dark:text-white">75%</span>
+                                        </div>
+                                    </div>
+                                    <div class="w-full bg-blue-50 dark:bg-blue-900/20 rounded-lg p-4">
+                                        <p class="text-center text-sm text-gray-600 dark:text-gray-400 mb-2">Mức độ: <span class="font-bold text-blue-600 dark:text-blue-400">Thành thạo (Level 3)</span></p>
+                                        <p class="text-xs text-gray-500 dark:text-gray-400 text-center">Đánh giá ngày 15/06/2024</p>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         <!-- Right Column -->
                         <div class="lg:col-span-2">
@@ -220,6 +246,7 @@
             console.log(`✅ Rendered ${competencies.length} competencies`);
         });
     </script>
+    <script src="auth.js"></script>
         </main>
     </div>
 </body>
