@@ -49,8 +49,8 @@
     <div class="ml-64 w-[calc(100%-256px)] h-screen overflow-y-auto">
         <main class="p-6 lg:p-10">
                 <div class="w-full max-w-7xl mx-auto">
-                    <!-- Back Button -->
-                    <div class="mb-4">
+                    <!-- Back Button - Admin Only -->
+                    <div id="backButton" class="mb-4">
                         <button onclick="window.location.href='nhan-vien.html'" 
                             class="flex items-center gap-2 text-[#4e6797] dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors">
                             <span class="material-symbols-outlined text-base">arrow_back</span>
@@ -62,11 +62,12 @@
                         <div class="flex flex-col gap-2">
                             <h1
                                 class="text-[#0e121b] dark:text-white text-3xl font-black leading-tight tracking-[-0.033em]">
-                                Chi Tiết Nhân Viên</h1>
-                            <p class="text-[#4e6797] dark:text-gray-400 text-base font-normal leading-normal">Xem thông
-                                tin, lịch sử và kết quả đánh giá năng lực của nhân viên.</p>
+                                <span id="pageTitle">Chi Tiết Nhân Viên</span></h1>
+                            <p class="text-[#4e6797] dark:text-gray-400 text-base font-normal leading-normal">
+                                <span id="pageDescription">Xem thông tin, lịch sử và kết quả đánh giá năng lực của nhân viên.</span>
+                            </p>
                         </div>
-                        <button onclick="window.location.href='danh-gia-nang-luc.html'"
+                        <button id="createAssessmentBtn" onclick="window.location.href='danh-gia-nang-luc.html'"
                             class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center gap-2 overflow-hidden rounded-lg h-10 px-4 bg-primary text-white text-sm font-bold leading-normal tracking-[0.015em] hover:bg-primary/90 transition-colors">
                             <span class="material-symbols-outlined text-base">add_circle</span>
                             <span class="truncate">Tạo Đánh Giá Mới</span>
@@ -244,6 +245,46 @@
             });
 
             console.log(`✅ Rendered ${competencies.length} competencies`);
+        });
+
+        // Apply role-based UI changes
+        document.addEventListener('DOMContentLoaded', () => {
+            // Check current user role
+            const currentUserStr = localStorage.getItem('currentUser');
+            if (currentUserStr) {
+                try {
+                    const currentUser = JSON.parse(currentUserStr);
+                    
+                    if (currentUser.role === 'user') {
+                        // Hide back button for regular users
+                        const backButton = document.getElementById('backButton');
+                        if (backButton) {
+                            backButton.style.display = 'none';
+                        }
+                        
+                        // Hide "Create Assessment" button for regular users
+                        const createBtn = document.getElementById('createAssessmentBtn');
+                        if (createBtn) {
+                            createBtn.style.display = 'none';
+                        }
+                        
+                        // Update page title and description
+                        const pageTitle = document.getElementById('pageTitle');
+                        if (pageTitle) {
+                            pageTitle.textContent = 'Hồ Sơ Năng Lực Của Tôi';
+                        }
+                        
+                        const pageDescription = document.getElementById('pageDescription');
+                        if (pageDescription) {
+                            pageDescription.textContent = 'Xem thông tin và kết quả đánh giá năng lực cá nhân của bạn.';
+                        }
+                        
+                        console.log('✅ User role UI applied - hidden admin buttons');
+                    }
+                } catch (e) {
+                    console.error('Error parsing user data:', e);
+                }
+            }
         });
     </script>
     <script src="auth.js"></script>
