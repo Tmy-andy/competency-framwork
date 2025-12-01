@@ -48,21 +48,29 @@
     }
 
     function setupEventListeners() {
-        // Find and setup "Lưu" button
-        const buttons = document.querySelectorAll('button');
-        buttons.forEach(btn => {
-            if (btn.textContent.includes('Lưu') && !btn.textContent.includes('Xem')) {
-                btn.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    showSaveModal();
-                });
+        console.log('📌 Setting up event listeners...');
+        
+        // Use event delegation for better handling
+        document.addEventListener('click', (e) => {
+            const btn = e.target.closest('button');
+            if (!btn) return;
+            
+            // Normalize text by removing all whitespace
+            const btnText = btn.textContent.replace(/\s+/g, ' ').trim();
+            console.log('🔘 Button clicked:', btnText);
+            
+            // Handle "Lưu" button
+            if (btnText.includes('Lưu') && !btnText.includes('Xem')) {
+                console.log('💾 Save button clicked');
+                e.preventDefault();
+                showSaveModal();
             }
-            // Setup "Xem trước" button
-            if (btn.textContent.includes('Xem trước')) {
-                btn.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    showPreviewModal();
-                });
+            
+            // Handle "Xem trước" button
+            if (btnText.includes('Xem trước') || btnText.includes('Xem trước')) {
+                console.log('👁️ Preview button clicked');
+                e.preventDefault();
+                showPreviewModal();
             }
         });
     }
@@ -134,16 +142,16 @@
                 </div>
                 <div class="flex gap-3 flex-wrap">
                     <button type="button" class="level-btn px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 hover:border-primary" data-level="1" data-comp="${comp.id}">
-                        <span class="text-sm font-medium">Critical</span>
+                        <span class="text-sm font-medium">1</span>
                     </button>
                     <button type="button" class="level-btn px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 hover:border-primary" data-level="2" data-comp="${comp.id}">
-                        <span class="text-sm font-medium">Low</span>
+                        <span class="text-sm font-medium">2</span>
                     </button>
                     <button type="button" class="level-btn px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 hover:border-primary" data-level="3" data-comp="${comp.id}">
-                        <span class="text-sm font-medium">Medium</span>
+                        <span class="text-sm font-medium">3</span>
                     </button>
                     <button type="button" class="level-btn px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 hover:border-primary" data-level="4" data-comp="${comp.id}">
-                        <span class="text-sm font-medium">High</span>
+                        <span class="text-sm font-medium">4</span>
                     </button>
                 </div>
                 <textarea placeholder="Nhận xét (tùy chọn)" class="comment-input w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-primary/50" data-comp="${comp.id}" rows="2"></textarea>
@@ -186,6 +194,10 @@
     }
 
     function showPreviewModal() {
+        console.log('👁️ showPreviewModal called');
+        console.log('Selected Employee ID:', selectedEmployeeId);
+        console.log('Competency Ratings:', competencyRatings);
+        
         if (!selectedEmployeeId) {
             alert('Vui lòng chọn nhân viên');
             return;
@@ -200,7 +212,6 @@
         const ratedCompetencies = Object.entries(competencyRatings).map(([compId, level]) => {
             const comp = competencies.find(c => c.id === compId);
             const textarea = document.querySelector(`textarea[data-comp="${compId}"]`);
-            const levelNames = ['', 'Critical', 'Low', 'Medium', 'High'];
             const levelColors = {
                 1: 'bg-red-100 text-red-800 dark:bg-red-900/50 dark:text-red-300',
                 2: 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900/50 dark:text-yellow-300',
@@ -210,7 +221,7 @@
             return {
                 name: comp?.name,
                 level: level,
-                levelName: levelNames[level],
+                levelName: `Level ${level}`,
                 levelColor: levelColors[level],
                 comment: textarea?.value || 'Không có nhận xét'
             };
@@ -221,7 +232,7 @@
         const modal = document.createElement('div');
         modal.className = 'fixed inset-0 z-50 flex items-center justify-center bg-black/50 dark:bg-black/70 p-4';
         modal.innerHTML = `
-            <div class="bg-white dark:bg-gray-900 rounded-lg shadow-xl max-w-3xl w-full max-h-[90vh] overflow-hidden flex flex-col">
+            <div class="bg-white dark:bg-gray-900 rounded-lg shadow-xl max-w-6xl w-full max-h-[90vh] overflow-hidden flex flex-col">
                 <div class="p-6 border-b border-gray-200 dark:border-gray-800">
                     <h2 class="text-2xl font-bold text-gray-900 dark:text-white">Xem Trước Đánh Giá</h2>
                     <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">Kiểm tra thông tin trước khi lưu</p>
@@ -230,12 +241,12 @@
                 <div class="flex-1 overflow-y-auto p-6">
                     <!-- Employee Info -->
                     <div class="mb-6 p-4 bg-gray-50 dark:bg-gray-800 rounded-lg">
-                        <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-2">Thông tin nhân viên</h3>
-                        <div class="grid grid-cols-2 gap-2 text-sm">
-                            <div><span class="text-gray-600 dark:text-gray-400">Họ tên:</span> <span class="font-medium text-gray-900 dark:text-white">${employee.name}</span></div>
-                            <div><span class="text-gray-600 dark:text-gray-400">Mã NV:</span> <span class="font-medium text-gray-900 dark:text-white">${employee.id}</span></div>
-                            <div><span class="text-gray-600 dark:text-gray-400">Vị trí:</span> <span class="font-medium text-gray-900 dark:text-white">${employee.position}</span></div>
-                            <div><span class="text-gray-600 dark:text-gray-400">Cửa hàng:</span> <span class="font-medium text-gray-900 dark:text-white">${employee.store}</span></div>
+                        <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-3">Thông tin nhân viên</h3>
+                        <div class="grid grid-cols-2 md:grid-cols-4 gap-3 text-sm">
+                            <div><span class="text-gray-600 dark:text-gray-400">Họ tên:</span> <span class="font-medium text-gray-900 dark:text-white block">${employee.name}</span></div>
+                            <div><span class="text-gray-600 dark:text-gray-400">Mã NV:</span> <span class="font-medium text-gray-900 dark:text-white block">${employee.id}</span></div>
+                            <div><span class="text-gray-600 dark:text-gray-400">Vị trí:</span> <span class="font-medium text-gray-900 dark:text-white block">${employee.position}</span></div>
+                            <div><span class="text-gray-600 dark:text-gray-400">Cửa hàng:</span> <span class="font-medium text-gray-900 dark:text-white block">${employee.store}</span></div>
                         </div>
                     </div>
 
@@ -248,20 +259,22 @@
                         </div>
                     </div>
 
-                    <!-- Competencies List -->
-                    <div class="space-y-3">
+                    <!-- Competencies List - Grid 3 columns -->
+                    <div>
                         <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-3">Chi tiết đánh giá</h3>
-                        ${ratedCompetencies.map(comp => `
-                            <div class="p-4 border border-gray-200 dark:border-gray-700 rounded-lg">
-                                <div class="flex items-start justify-between mb-2">
-                                    <h4 class="font-semibold text-gray-900 dark:text-white">${comp.name}</h4>
-                                    <span class="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-semibold ${comp.levelColor}">
-                                        ${comp.levelName}
-                                    </span>
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+                            ${ratedCompetencies.map(comp => `
+                                <div class="p-3 border border-gray-200 dark:border-gray-700 rounded-lg">
+                                    <div class="flex items-start justify-between mb-2">
+                                        <h4 class="font-semibold text-sm text-gray-900 dark:text-white flex-1 pr-2">${comp.name}</h4>
+                                        <span class="inline-flex items-center rounded-full px-2 py-0.5 text-xs font-semibold ${comp.levelColor} whitespace-nowrap">
+                                            ${comp.levelName}
+                                        </span>
+                                    </div>
+                                    ${comp.comment && comp.comment !== 'Không có nhận xét' ? `<p class="text-xs text-gray-600 dark:text-gray-400 italic line-clamp-2">${comp.comment}</p>` : '<p class="text-xs text-gray-400 dark:text-gray-500 italic">Không có nhận xét</p>'}
                                 </div>
-                                <p class="text-sm text-gray-600 dark:text-gray-400 italic">${comp.comment}</p>
-                            </div>
-                        `).join('')}
+                            `).join('')}
+                        </div>
                     </div>
                 </div>
 
