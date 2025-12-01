@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+
+<html class="light" lang="vi">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Chi Tiết Nhân Viên</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#195de6",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#111621",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+
+        .material-symbols-outlined.fill {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+    <script src="competency-manager.js"></script>
+</head>
+
+<body class="font-display bg-background-light dark:bg-background-dark" data-page="nhan-vien-infor">
+    <!-- Sidebar will be loaded here -->
+    <div id="sidebar-container"></div>
+
+    <div class="ml-64 w-[calc(100%-256px)] h-screen overflow-y-auto">
+        <main class="p-6 lg:p-10">
+                <div class="w-full max-w-7xl mx-auto">
+                    <!-- Back Button -->
+                    <div class="mb-4">
+                        <button onclick="window.location.href='nhan-vien.html'" 
+                            class="flex items-center gap-2 text-[#4e6797] dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors">
+                            <span class="material-symbols-outlined text-base">arrow_back</span>
+                            <span class="text-sm font-medium">Quay lại danh sách nhân viên</span>
+                        </button>
+                    </div>
+                    <!-- PageHeading -->
+                    <div class="flex flex-wrap justify-between items-center gap-4 mb-8">
+                        <div class="flex flex-col gap-2">
+                            <h1
+                                class="text-[#0e121b] dark:text-white text-3xl font-black leading-tight tracking-[-0.033em]">
+                                Chi Tiết Nhân Viên</h1>
+                            <p class="text-[#4e6797] dark:text-gray-400 text-base font-normal leading-normal">Xem thông
+                                tin, lịch sử và kết quả đánh giá năng lực của nhân viên.</p>
+                        </div>
+                        <button onclick="window.location.href='danh-gia-nang-luc.html'"
+                            class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center gap-2 overflow-hidden rounded-lg h-10 px-4 bg-primary text-white text-sm font-bold leading-normal tracking-[0.015em] hover:bg-primary/90 transition-colors">
+                            <span class="material-symbols-outlined text-base">add_circle</span>
+                            <span class="truncate">Tạo Đánh Giá Mới</span>
+                        </button>
+                    </div>
+                    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                        <!-- Left Column -->
+                        <div class="lg:col-span-1 flex flex-col gap-8">
+                            <!-- Profile Header Card -->
+                            <div class="bg-white dark:bg-[#1a222c] rounded-xl shadow-sm p-6">
+                                <div class="flex flex-col items-center text-center">
+                                    <div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full mb-4 size-32"
+                                        data-alt="Profile picture of Nguyễn Văn A"
+                                        style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAD3YTqgkCnk09STtF1JiMEUzOdPBla7cpsNMu-g4M03gzt7XyfYd47XbDqpzmbQMMMrgTH0Lv3kDjw2-u0YTxVALzL3pAx2q6Za3PdWVcRdQREFOdXIBpUMi5uDtDEdH09gNvpRxFJIaIdFVZK3VxSY4OTf6QKcWwXA245bslTPCcJ1yCbMyEa71ySiuczdz658YpvKGMmpvp16SqakA3IAmAllXOKTniq1CeuvbIB64NCKAulpGO8KcsnVKxoEzjzCLFijwJ1guGj");'>
+                                    </div>
+                                    <p
+                                        class="text-[#0e121b] dark:text-white text-xl font-bold leading-tight tracking-[-0.015em]">
+                                        Nguyễn Văn A</p>
+                                    <p class="text-[#4e6797] dark:text-gray-400 text-sm font-normal leading-normal">Mã
+                                        nhân viên: NV12345</p>
+                                    <span
+                                        class="mt-3 inline-flex items-center rounded-full bg-green-100 dark:bg-green-900/50 px-3 py-1 text-sm font-medium text-green-700 dark:text-green-300">Senior</span>
+                                </div>
+                                <!-- DescriptionList -->
+                                <div class="mt-6 grid grid-cols-1 gap-x-4">
+                                    <div
+                                        class="border-t border-t-gray-200 dark:border-t-gray-700 py-4 grid grid-cols-[auto_1fr] gap-4">
+                                        <p class="text-[#4e6797] dark:text-gray-400 text-sm font-normal leading-normal">
+                                            Vị trí</p>
+                                        <p
+                                            class="text-[#0e121b] dark:text-gray-200 text-sm font-medium leading-normal text-right">
+                                            Nhân viên Bán hàng Cấp cao</p>
+                                    </div>
+                                    <div
+                                        class="border-t border-t-gray-200 dark:border-t-gray-700 py-4 grid grid-cols-[auto_1fr] gap-4">
+                                        <p class="text-[#4e6797] dark:text-gray-400 text-sm font-normal leading-normal">
+                                            Cửa hàng</p>
+                                        <p
+                                            class="text-[#0e121b] dark:text-gray-200 text-sm font-medium leading-normal text-right">
+                                            Cửa hàng Quận 1</p>
+                                    </div>
+                                    <div
+                                        class="border-t border-t-gray-200 dark:border-t-gray-700 py-4 grid grid-cols-[auto_1fr] gap-4">
+                                        <p class="text-[#4e6797] dark:text-gray-400 text-sm font-normal leading-normal">
+                                            Quản lý</p>
+                                        <p
+                                            class="text-[#0e121b] dark:text-gray-200 text-sm font-medium leading-normal text-right">
+                                            Trần Thị B</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Right Column -->
+                        <div class="lg:col-span-2">
+                            <div class="bg-white dark:bg-[#1a222c] rounded-xl shadow-sm">
+                                <div class="p-6 border-b border-gray-200 dark:border-gray-700">
+                                    <h3 class="text-lg font-bold text-[#0e121b] dark:text-white">Chi tiết Đánh giá Năng
+                                        lực</h3>
+                                    <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">Hiển thị tất cả 38 năng lực từ khung năng lực</p>
+                                </div>
+                                <div class="overflow-x-auto">
+                                    <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                                        <thead
+                                            class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                                            <tr>
+                                                <th class="px-6 py-3" scope="col">Năng Lực</th>
+                                                <th class="px-6 py-3" scope="col">Cấp độ</th>
+                                                <th class="px-6 py-3" scope="col">Ghi chú/Nhận xét</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="competency-table-body">
+                                            <!-- Will be populated by JavaScript -->
+                                            <tr>
+                                                <td colspan="3" class="px-6 py-8 text-center text-gray-500 dark:text-gray-400">
+                                                    Đang tải dữ liệu...
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+    </div>
+
+    <script>
+        // Load sidebar from sidebar.html
+        fetch('sidebar.html')
+            .then(response => response.text())
+            .then(html => {
+                document.getElementById('sidebar-container').innerHTML = html;
+                
+                // Highlight active page AFTER sidebar is loaded
+                setTimeout(() => {
+                    const currentPage = document.body.getAttribute('data-page');
+                    const navLinks = document.querySelectorAll('.nav-link');
+                    
+                    navLinks.forEach(link => {
+                        link.classList.remove('bg-primary/10', 'text-primary', 'dark:text-white', 'dark:bg-primary/30', 'font-bold');
+                        if (link.getAttribute('data-page') === currentPage) {
+                            link.classList.add('bg-primary/10', 'text-primary', 'dark:text-white', 'dark:bg-primary/30', 'font-bold');
+                        }
+                    });
+                }, 50);
+            });
+
+        // Render tất cả competencies khi dữ liệu sẵn sàng
+        window.addEventListener('competencyDataReady', () => {
+            const competencies = competencyManager.getCompetencies();
+            const tbody = document.getElementById('competency-table-body');
+            
+            if (!tbody || !competencies || competencies.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="3" class="px-6 py-8 text-center text-gray-500 dark:text-gray-400">Không có dữ liệu</td></tr>';
+                return;
+            }
+
+            tbody.innerHTML = '';
+            
+            const levelColors = {
+                1: 'bg-red-100 text-red-800 dark:bg-red-900/50 dark:text-red-300',
+                2: 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900/50 dark:text-yellow-300',
+                3: 'bg-blue-100 text-blue-800 dark:bg-blue-900/50 dark:text-blue-300',
+                4: 'bg-green-100 text-green-800 dark:bg-green-900/50 dark:text-green-300'
+            };
+            
+            competencies.forEach((comp, index) => {
+                const row = document.createElement('tr');
+                row.className = 'bg-white dark:bg-[#1a222c] border-b dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800';
+                
+                // Random level cho demo (1-4)
+                const randomLevel = Math.floor(Math.random() * 4) + 1;
+                const levelColor = levelColors[randomLevel];
+                
+                row.innerHTML = `
+                    <td class="px-6 py-4 font-medium text-gray-900 dark:text-white">${comp.name}</td>
+                    <td class="px-6 py-4">
+                        <span class="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-semibold ${levelColor}">
+                            Level - ${randomLevel}
+                        </span>
+                    </td>
+                    <td class="px-6 py-4 text-gray-500 dark:text-gray-400">
+                        <span class="text-xs italic">Chưa có nhận xét</span>
+                    </td>
+                `;
+                
+                tbody.appendChild(row);
+            });
+
+            console.log(`✅ Rendered ${competencies.length} competencies`);
+        });
+    </script>
+        </main>
+    </div>
+</body>
+
+</html>

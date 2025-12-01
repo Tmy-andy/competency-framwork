@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🧪 Competency Framework - Test Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="competency-manager.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-100..100" />
+    <style>
+        .test-card {
+            @apply border-l-4 p-4 rounded mb-3 font-mono text-sm;
+        }
+        .test-pass {
+            @apply test-card border-green-500 bg-green-50 text-green-800;
+        }
+        .test-fail {
+            @apply test-card border-red-500 bg-red-50 text-red-800;
+        }
+        .test-info {
+            @apply test-card border-blue-500 bg-blue-50 text-blue-800;
+        }
+        pre {
+            @apply overflow-x-auto;
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-white p-4">
+    <div class="max-w-4xl mx-auto">
+        <!-- Header -->
+        <div class="mb-8 text-center">
+            <h1 class="text-4xl font-bold mb-2">🧪 Competency Framework</h1>
+            <p class="text-xl text-gray-400">Test & Diagnostic Dashboard</p>
+        </div>
+
+        <!-- Main Testing Area -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
+            <!-- Status Panel -->
+            <div class="lg:col-span-1 bg-gray-800 rounded-lg p-6 border border-gray-700">
+                <h2 class="text-xl font-bold mb-4">📊 Status</h2>
+                
+                <div class="space-y-3">
+                    <div>
+                        <p class="text-gray-400 text-sm">Manager</p>
+                        <p id="manager-status" class="text-lg font-semibold text-yellow-400">⏳ Loading...</p>
+                    </div>
+                    
+                    <div>
+                        <p class="text-gray-400 text-sm">Data Initialized</p>
+                        <p id="data-status" class="text-lg font-semibold text-yellow-400">⏳ Loading...</p>
+                    </div>
+                    
+                    <div>
+                        <p class="text-gray-400 text-sm">Total Competencies</p>
+                        <p id="total-comp" class="text-2xl font-bold text-blue-400">0</p>
+                    </div>
+                    
+                    <div>
+                        <p class="text-gray-400 text-sm">Total Employees</p>
+                        <p id="total-emp" class="text-2xl font-bold text-green-400">0</p>
+                    </div>
+                    
+                    <div>
+                        <p class="text-gray-400 text-sm">Total Assessments</p>
+                        <p id="total-assess" class="text-2xl font-bold text-purple-400">0</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Actions -->
+            <div class="lg:col-span-2 bg-gray-800 rounded-lg p-6 border border-gray-700">
+                <h2 class="text-xl font-bold mb-4">⚡ Quick Actions</h2>
+                
+                <div class="grid grid-cols-2 gap-2">
+                    <button onclick="runAllTests()" class="bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded font-semibold transition">
+                        🧪 Run All Tests
+                    </button>
+                    <button onclick="refreshData()" class="bg-green-600 hover:bg-green-700 px-4 py-2 rounded font-semibold transition">
+                        🔄 Refresh Data
+                    </button>
+                    <button onclick="clearLocalStorage()" class="bg-yellow-600 hover:bg-yellow-700 px-4 py-2 rounded font-semibold transition">
+                        🗑️ Clear Storage
+                    </button>
+                    <button onclick="exportJSON()" class="bg-purple-600 hover:bg-purple-700 px-4 py-2 rounded font-semibold transition">
+                        💾 Export JSON
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Test Results -->
+        <div class="bg-gray-800 rounded-lg p-6 border border-gray-700">
+            <h2 class="text-xl font-bold mb-4">📋 Test Results</h2>
+            <div id="test-results" class="space-y-2">
+                <p class="text-gray-400">⏳ Ready to run tests...</p>
+            </div>
+        </div>
+
+        <!-- Data Explorer -->
+        <div class="mt-6 bg-gray-800 rounded-lg p-6 border border-gray-700">
+            <h2 class="text-xl font-bold mb-4">🔍 Data Explorer</h2>
+            
+            <div class="mb-4">
+                <label class="block text-sm mb-2">Select Data Type:</label>
+                <select id="data-type" onchange="exploreData()" class="w-full bg-gray-700 border border-gray-600 rounded px-3 py-2 text-white">
+                    <option value="competencies">Competencies</option>
+                    <option value="employees">Employees</option>
+                    <option value="assessments">Assessments</option>
+                    <option value="mapping">Mapping</option>
+                    <option value="stats">Dashboard Stats</option>
+                </select>
+            </div>
+            
+            <pre id="data-output" class="bg-gray-900 border border-gray-700 rounded p-4 text-green-400 text-xs overflow-y-auto max-h-96"></pre>
+        </div>
+
+        <!-- Console Emulator -->
+        <div class="mt-6 bg-gray-800 rounded-lg p-6 border border-gray-700">
+            <h2 class="text-xl font-bold mb-4">💻 Console Emulator</h2>
+            
+            <div class="mb-4">
+                <label class="block text-sm mb-2">Run JavaScript:</label>
+                <textarea id="console-input" class="w-full bg-gray-900 border border-gray-600 rounded px-3 py-2 text-white font-mono text-sm h-24 placeholder-gray-600" placeholder="competencyManager.getCompetencies()">competencyManager.getCompetencies().length</textarea>
+            </div>
+            
+            <button onclick="runConsoleCommand()" class="bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded font-semibold mb-4 w-full transition">
+                ▶️ Execute
+            </button>
+            
+            <pre id="console-output" class="bg-gray-900 border border-gray-700 rounded p-4 text-cyan-400 text-xs overflow-y-auto max-h-48"></pre>
+        </div>
+
+        <!-- Footer -->
+        <div class="mt-8 text-center text-gray-600 text-sm border-t border-gray-700 pt-4">
+            <p>🚀 Competency Framework v1.0.0 | Test Dashboard</p>
+            <p>Last Updated: December 1, 2025</p>
+        </div>
+    </div>
+
+    <script>
+        let testLog = [];
+
+        // Initialize tests
+        window.addEventListener('competencyDataReady', () => {
+            updateStatus();
+        });
+
+        function updateStatus() {
+            document.getElementById('manager-status').textContent = '✅ Ready';
+            document.getElementById('manager-status').className = 'text-lg font-semibold text-green-400';
+            
+            document.getElementById('data-status').textContent = '✅ Initialized';
+            document.getElementById('data-status').className = 'text-lg font-semibold text-green-400';
+            
+            const comps = competencyManager.getCompetencies();
+            const emps = competencyManager.getEmployees();
+            const assess = competencyManager.getAssessments();
+            
+            document.getElementById('total-comp').textContent = comps.length;
+            document.getElementById('total-emp').textContent = emps.length;
+            document.getElementById('total-assess').textContent = assess.length;
+        }
+
+        function addTestResult(name, passed, details) {
+            const status = passed ? '✅ PASS' : '❌ FAIL';
+            testLog.push({ name, passed, status, details });
+            
+            const resultsDiv = document.getElementById('test-results');
+            const resultCard = document.createElement('div');
+            resultCard.className = passed ? 'test-pass' : 'test-fail';
+            resultCard.innerHTML = `
+                <p class="font-bold">${status} - ${name}</p>
+                ${details ? `<p class="mt-2">${details}</p>` : ''}
+            `;
+            resultsDiv.appendChild(resultCard);
+        }
+
+        function runAllTests() {
+            testLog = [];
+            document.getElementById('test-results').innerHTML = '';
+            
+            try {
+                // Test 1: Manager exists
+                addTestResult('CompetencyManager exists', 
+                    typeof competencyManager !== 'undefined',
+                    'competencyManager object is accessible'
+                );
+
+                // Test 2: Competencies loaded
+                const comps = competencyManager.getCompetencies();
+                addTestResult('Competencies loaded', 
+                    comps.length === 38,
+                    `Found ${comps.length} competencies (expected 38)`
+                );
+
+                // Test 3: Employees loaded
+                const emps = competencyManager.getEmployees();
+                addTestResult('Employees loaded', 
+                    emps.length >= 5,
+                    `Found ${emps.length} employees`
+                );
+
+                // Test 4: Assessments loaded
+                const assess = competencyManager.getAssessments();
+                addTestResult('Assessments loaded', 
+                    assess.length >= 3,
+                    `Found ${assess.length} assessments`
+                );
+
+                // Test 5: Get specific competency
+                const comp = competencyManager.getCompetencyById(-6);
+                addTestResult('Get Competency by ID', 
+                    comp && comp.name === 'Action Oriented',
+                    `Found: ${comp?.name || 'NOT FOUND'}`
+                );
+
+                // Test 6: Get specific employee
+                const emp = competencyManager.getEmployeeById(1);
+                addTestResult('Get Employee by ID', 
+                    emp && emp.name,
+                    `Found: ${emp?.name || 'NOT FOUND'}`
+                );
+
+                // Test 7: Dashboard stats
+                const stats = competencyManager.getDashboardStats();
+                addTestResult('Dashboard Stats', 
+                    stats.totalEmployees > 0 && typeof stats.completionRate === 'number',
+                    `Total: ${stats.totalEmployees}, Rate: ${stats.completionRate}%`
+                );
+
+                // Test 8: Get employees by store
+                const hanoiEmps = competencyManager.getEmployeesByStore('Hà Nội');
+                addTestResult('Filter by Store', 
+                    Array.isArray(hanoiEmps),
+                    `Found ${hanoiEmps.length} employees in Hà Nội`
+                );
+
+                // Test 9: Add assessment
+                const initialCount = competencyManager.getAssessments().length;
+                competencyManager.addAssessment(1, -7, 2);
+                const newCount = competencyManager.getAssessments().length;
+                addTestResult('Add Assessment', 
+                    newCount === initialCount + 1,
+                    `Before: ${initialCount}, After: ${newCount}`
+                );
+
+                // Test 10: LocalStorage
+                competencyManager.saveToLocalStorage();
+                const loaded = localStorage.getItem('competencyData') !== null;
+                addTestResult('LocalStorage Save', 
+                    loaded,
+                    'Data saved to localStorage'
+                );
+
+                // Summary
+                const passed = testLog.filter(t => t.passed).length;
+                const total = testLog.length;
+                const resultDiv = document.getElementById('test-results');
+                const summary = document.createElement('div');
+                summary.className = 'test-info mt-4 pt-4 border-t border-blue-400';
+                summary.innerHTML = `
+                    <p class="font-bold">📊 Summary: ${passed}/${total} tests passed</p>
+                    <p>${passed === total ? '✅ All tests passed!' : `⚠️ ${total - passed} test(s) failed`}</p>
+                `;
+                resultDiv.appendChild(summary);
+
+            } catch (error) {
+                addTestResult('Test Execution', false, `Error: ${error.message}`);
+            }
+        }
+
+        function refreshData() {
+            competencyManager.loadFromLocalStorage();
+            updateStatus();
+            addTestResult('Refresh Data', true, 'Data reloaded from localStorage');
+        }
+
+        function clearLocalStorage() {
+            localStorage.removeItem('competencyData');
+            addTestResult('Clear Storage', true, 'localStorage cleared');
+        }
+
+        function exportJSON() {
+            const data = competencyManager.data;
+            const json = JSON.stringify(data, null, 2);
+            const blob = new Blob([json], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `competency-data-${new Date().toISOString().split('T')[0]}.json`;
+            a.click();
+            addTestResult('Export JSON', true, 'File downloaded');
+        }
+
+        function exploreData() {
+            const type = document.getElementById('data-type').value;
+            let data;
+
+            switch (type) {
+                case 'competencies':
+                    data = competencyManager.getCompetencies().slice(0, 3);
+                    break;
+                case 'employees':
+                    data = competencyManager.getEmployees();
+                    break;
+                case 'assessments':
+                    data = competencyManager.getAssessments();
+                    break;
+                case 'mapping':
+                    data = Object.entries(competencyManager.data.mapping).slice(0, 3);
+                    break;
+                case 'stats':
+                    data = competencyManager.getDashboardStats();
+                    break;
+                default:
+                    data = {};
+            }
+
+            document.getElementById('data-output').textContent = JSON.stringify(data, null, 2);
+        }
+
+        function runConsoleCommand() {
+            const input = document.getElementById('console-input').value;
+            const output = document.getElementById('console-output');
+            
+            try {
+                const result = eval(input);
+                output.textContent = JSON.stringify(result, null, 2);
+            } catch (error) {
+                output.textContent = `❌ Error: ${error.message}`;
+            }
+        }
+
+        // Auto-explore on load
+        window.addEventListener('competencyDataReady', () => {
+            exploreData();
+        });
+    </script>
+</body>
+</html>

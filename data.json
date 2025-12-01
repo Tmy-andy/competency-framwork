@@ -1,0 +1,1352 @@
+{
+  "competencies": [
+    {
+      "id": "comp_1",
+      "name": "Action Oriented",
+      "description": "Taking  on  new  opportunities  and  tough  challenges  with  a  sense  of  urgency,  high  energy,  and enthusiasm.",
+      "category": "General Competency",
+      "proficiencyLevels": [
+        {
+          "name": "Critical",
+          "description": "-  Displays a can-do attitude and enthusiasm.\n-  Confirms what needs to be done and then does it.\n-  Begins work early enough to meet deadlines.\n-  Takes action without relying on unnecessary oversight."
+        },
+        {
+          "name": "Low",
+          "description": "-  Initiates timely action to address important issues.\n-  Moves quickly to seize opportunities.\n-  Takes on difficult challenges without procrastinating.\n-  Takes action to resolve problems when they arise."
+        },
+        {
+          "name": "Medium",
+          "description": "-  Drives others to take timely action.\n-  Identifies and seizes new opportunities that benefit the business.\n-  Instills a can-do attitude in others.\n-  Pushes team or others to take action on new challenges."
+        },
+        {
+          "name": "High",
+          "description": "-  Builds an environment that emphasizes taking initiative and acting quickly.\n-  Models the enthusiasm and can-do attitude for the organization.\n-  Helps the organization respond quickly to opportunities.\n-  Leads the organization on bold challenges."
+        }
+      ]
+    },
+    {
+      "id": "comp_2",
+      "name": "Attracts Top Talent",
+      "description": "Attracting and selecting the best talent to meet current and future business needs.",
+      "category": "General Competency",
+      "proficiencyLevels": [
+        {
+          "name": "Critical",
+          "description": "Not applicable"
+        },
+        {
+          "name": "Low",
+          "description": "- Recruits/refers qualified people.\n- Identifies the qualifications required for successful job performance.\n- Makes accurate\n                                                                                                                                                                                                                                                                evaluations of people’s capabilities and fit.F13\n- Uses sound techniques to assess people."
+        },
+        {
+          "name": "Medium",
+          "description": "- Portrays the organization in ways that entice others to join.\n- Hires people who demonstrate long-term organizational fit and sustained contribution.\n- Gains an understanding of candidates’ strengths and weaknesses.\n- Pursues and attracts talented candidates for key roles."
+        },
+        {
+          "name": "High",
+          "description": "- Creates an organization that is an attractive place to work.\n- Ensures that processes produce the talent needed for the future.\n- Identifies and attracts key individuals who have the critical capabilities needed by the organization.\n- Identifies and resolves critical gaps in the organization’s strategic talent pools."
+        }
+      ]
+    },
+    {
+      "id": "comp_3",
+      "name": "Balances Stakeholders",
+      "description": "Anticipating  and  balancing  the  needs  of  multiple  stakeholders",
+      "category": "General Competency",
+      "proficiencyLevels": [
+        {
+          "name": "Critical",
+          "description": "-  Seeks to understand the varied stakeholder priorities.\n-  Learns the organization’s standards, processes, and cultural norms regarding stakeholder relationships.\n-  Seeks to understand stakeholder problems and takes steps to resolve them.\n-  Seeks guidance on how to meet the needs of multiple internal and external stakeholders."
+        },
+        {
+          "name": "Low",
+          "description": "-  Works through potential conflicts appropriately to provide balanced solutions.\n-  Is dedicated to meeting the expectations and requirements of internal and external stakeholders.\n-  Responds to potential conflicts among stakeholders with fair, transparent, and balanced decisions.\n-  Takes into account all relevant issues and stakeholders when making decisions."
+        },
+        {
+          "name": "Medium",
+          "description": "-  Draws on multiple stakeholder perspectives and approaches to find optimal solutions.\n-  Encourages others to seek perspectives from stakeholders.\n-  Ensures that others demonstrate strong ethics and cross-cultural sensitivity when making decisions.\n-  Helps others identify and anticipate stakeholder requirements, expectations, and needs."
+        },
+        {
+          "name": "High",
+          "description": "-  Creates flexibility in the organization that is needed to respond to varied stakeholder needs.\n-  Demonstrates foresight about how stakeholder priorities will change and evolve.\n-  Optimizes decisions across the varied needs of internal and external stakeholders.\n-  Serves as a role model for considering cultural and ethical factors in balancing the needs of stakeholders."
+        }
+      ]
+    },
+    {
+      "id": "comp_4",
+      "name": "Being Resilient",
+      "description": "Rebounding from setbacks and adversity when facing difficult situations.",
+      "category": "General Competency",
+      "proficiencyLevels": [
+        {
+          "name": "Critical",
+          "description": "- Remains calm and objective in emotional or stressful situations.\n- Recovers quickly from problems and setbacks.\n- Follows guidance on how to respond to challenging or volatile situations.\n- Stays focused on tasks despite disruptions or obstacles."
+        },
+        {
+          "name": "Low",
+          "description": "- Demonstrates composure and professionalism under difficult circumstances.\n- Bounces back from setbacks or adversity.\n- Maintains productivity under stress or pressure.\n- Overcomes obstacles and learns from failures."
+        },
+        {
+          "name": "Medium",
+          "description": "- Remains objective and calm when faced with adversity.\n- Grows from hardships and difficult experiences.\n- Manages crises and volatile situations effectively.\n- Helps others recover momentum and confidence after failures or setbacks."
+        },
+        {
+          "name": "High",
+          "description": "- Shows persistence in the face of adversity or obstacles, encouraging others to do the same.\n- Helps the organization grow from hardships and difficult experiences.\n- Helps the organization recover momentum and confidence after failures or setbacks.\n- Displays stability and resilience in the face of crisis, enabling the organization to remain focused and productive."
+        }
+      ]
+    },
+    {
+      "id": "comp_5",
+      "name": "Builds Effective Teams",
+      "description": "Building strong-identity teams that apply their diverse skills and perspectives to achieve common goals.",
+      "category": "General Competency",
+      "proficiencyLevels": [
+        {
+          "name": "Critical",
+          "description": "- Contributes to positive morale and a sense of team spirit.\n- Offers to help others complete work to ensure the team's success.\n- Learns and reinforces the team’s common goals and priorities.\n- Shares credit with others for team accomplishments."
+        },
+        {
+          "name": "Low",
+          "description": "- Participates in constructive dialogue with the team, ensuring multiple perspectives are considered.\n- Places the team’s priorities above personal objectives.\n- Supports team decisions and promotes team spirit.\n- Involves others appropriately when working on team projects."
+        },
+        {
+          "name": "Medium",
+          "description": "- Coaches others on how to build effective teams.\n- Communicates clear goals and roles to team members.\n- Ensures that the team has the right mix of skills and leverages the strengths of individual members.\n- Rewards team efforts and accomplishments."
+        },
+        {
+          "name": "High",
+          "description": "- Builds a cohesive leadership team that drives the goals and success of the organization.\n- Creates a culture with systems and processes that enable cross- functional teamwork.\n- Instills a common mindset and team spirit across the organization.\n- Models teamwork by working effectively with other leaders throughout the organization."
+        }
+      ]
+    },
+    {
+      "id": "comp_6",
+      "name": "Builds Networks",
+      "description": "Effectively building formal and informal relationship networks inside and outside the organization.",
+      "category": "General Competency",
+      "proficiencyLevels": [
+        {
+          "name": "Critical",
+          "description": "- Seeks to understand the formal and informal channels for learning and exchanging ideas.\n- Builds relationships when connected with key contacts.\n- Develops networks by participating in organizational groups and activities.\n- Begins to build relationships across a variety of functions and areas."
+        },
+        {
+          "name": "Low",
+          "description": "- Cultivates a network of people across a variety of functions and business units.\n- Uses networks to locate industry experts who will share best practices.\n- Uses networking skills to reach people who can provide insight and influence outcomes.\n- Uses relationship networks to exchange ideas and knowledge."
+        },
+        {
+          "name": "Medium",
+          "description": "- Builds networks to stay informed on industry developments and enhance own level of influence.\n- Reinforces the importance of building and maintaining strong working relationships.\n- Builds effective professional relationships with stakeholders and decision makers.\n- Shares own internal and external network of contacts to help others build their networks."
+        },
+        {
+          "name": "High",
+          "description": "- Builds relationships and influential connections among and across cultural, organizational, and global boundaries.\n- Is a relationship broker who links key people together to accomplish goals.\n- Participates in industry conferences and meetings to build relationships and shape the industry.\n- Cultivates a broad and influential network of contacts both within and outside the organization."
+        }
+      ]
+    },
+    {
+      "id": "comp_7",
+      "name": "Business Insight",
+      "description": "Applying  knowledge  of  business  and  the  marketplace  to  advance  the  organization’s  goals .",
+      "category": "General Competency",
+      "proficiencyLevels": [
+        {
+          "name": "Critical",
+          "description": "-  Learns about the key drivers of the\norganization’s business.\n-  Shows interest in industry developments and trends.\n-  Shows interest in the fundamentals of how the business works.\n-  Gathers input about how choices and actions may impact the business."
+        },
+        {
+          "name": "Low",
+          "description": "-  Understands how changes in the marketplace affect the business.\n-  Stays informed about business news relevant to own area of expertise.\n-  Knows how own actions impact critical business drivers.\n-  Uses knowledge about the business and industry to guide decisions and own work."
+        },
+        {
+          "name": "Medium",
+          "description": "-  Keeps others informed of relevant industry developments.\n-  Educates others on the fundamentals of the business and industry.\n-  Helps others understand their contribution to the success of the broader organization.\n-  Applies insights of the industry and trends to drive critical initiatives."
+        },
+        {
+          "name": "High",
+          "description": "-  Has thorough business/industry knowledge.\n-  Uses business knowledge and insights to guide the decisions and work of the organization.\n-  Monitors current and possible future policies and external factors affecting the business.\n-  Knows the right responses to changing market dynamics and new business information."
+        }
+      ]
+    },
+    {
+      "id": "comp_8",
+      "name": "Collaborates",
+      "description": "Building partnerships and working collaboratively with others to meet shared objectives.",
+      "category": "General Competency",
+      "proficiencyLevels": [
+        {
+          "name": "Critical",
+          "description": "- Makes productive contributions to the group.\n- Solicits input from others.\n- Acknowledges others’ efforts, advice, and contributions.\n- Volunteers to help others when needed."
+        },
+        {
+          "name": "Low",
+          "description": "- Shares information with others so there are no surprises.\n- Involves others as appropriate to accomplish individual and group goals.\n- Encourages unity rather than “us vs. them” thinking.\n- Welcomes and acknowledges the ideas and input of others."
+        },
+        {
+          "name": "Medium",
+          "description": "- Credits others for their contributions and accomplishments.\n- Encourages people to express their views openly.\n- Facilitates effective collaboration among coworkers and external partners.\n- Involves others in making decisions on behalf of the group."
+        },
+        {
+          "name": "High",
+          "description": "- Exemplifies collaborative leadership by inviting a wide variety of perspectives to the discussions.\n- Creates a climate where people communicate fearlessly.\n- Builds a culture of collaboration and teamwork across organizational boundaries.\n- Removes organizational barriers to collaboration."
+        }
+      ]
+    },
+    {
+      "id": "comp_9",
+      "name": "Communicates Effectively",
+      "description": "Developing  and  delivering  multi -mode  communications  that  convey  a  clear  understanding  of  the unique  needs  of  different  audiences.",
+      "category": "General Competency",
+      "proficiencyLevels": [
+        {
+          "name": "Critical",
+          "description": "-  Keeps others informed.\n-  Listens attentively to others’ insights, advice, and instruction.\n-  Responds openly to others.\n-  Speaks with an appropriate amount of detail."
+        },
+        {
+          "name": "Low",
+          "description": "-  Clear, concise, and professional in communication.\n-  Listens with interest to what others have to say.\n-  Shares information and updates with others as needed.\n-  Is clear and thorough in reports, documentation, and other written information."
+        },
+        {
+          "name": "Medium",
+          "description": "-  Adjusts communication content and style to the audience and a diverse set of stakeholders.\n-  Breaks down communication barriers between others.\n-  Encourages candid and open communication among groups.\n-  Practices active and attentive listening skills to verify understanding."
+        },
+        {
+          "name": "High",
+          "description": "-  Creates venues for constructive dialogue within the organization.\n-  Demonstrates candor and openness when discussing major organizational initiatives.\n-  Communicates effectively to a wide variety of audiences at all organizational levels.\n-  Promotes a free flow of information throughout the organization (e.g., upward, downward, and across)."
+        }
+      ]
+    },
+    {
+      "id": "comp_10",
+      "name": "Courage",
+      "description": "Stepping up to address difficult issues, saying what needs to be said .",
+      "category": "General Competency",
+      "proficiencyLevels": [
+        {
+          "name": "Critical",
+          "description": "- Willing to take on the unknown when asked to do so.\n- Will say what needs to be said.\n- Responds appropriately to confrontation and challenge.\n- Faces adversity and challenges."
+        },
+        {
+          "name": "Low",
+          "description": "- Follows convictions in the face of adversity.\n- Takes on the unknown.\n- Raises difficult issues to ensure that they are addressed.\n- Offers ideas or opinions without fear of criticism or professional risk."
+        },
+        {
+          "name": "Medium",
+          "description": "- Coaches people on how to take a stand in the face of adversity when they believe in something.\n- Confronts tough organizational issues and disagreements.\n- Delivers difficult messages directly.\n- Demonstrates the courage to say \"no\" when necessary."
+        },
+        {
+          "name": "High",
+          "description": "- Confronts actions that are inconsistent with the\norganization’s core values.\"\n- Fosters a culture that supports people who take well-reasoned risks, regardless of the outcome.\n- Takes stands on behalf of the organization in the face of adversity.\n- Leads the organization through high-stakes situations, crises, or conditions of uncertainty."
+        }
+      ]
+    },
+    {
+      "id": "comp_11",
+      "name": "Cultivates Innovation",
+      "description": "Creating new and better ways for the organization to be successful .",
+      "category": "General Competency",
+      "proficiencyLevels": [
+        {
+          "name": "Critical",
+          "description": "- Shares new and useful ideas.\n- Seeks exposure to new ways of looking at things.\n- Learns and applies innovative methods, tools, and technology.\n- Welcomes input from others to develop and implement creative ideas."
+        },
+        {
+          "name": "Low",
+          "description": "- Suggests creative ideas and innovative solutions.\n- Explores multiple alternatives and approaches to overcome obstacles and find solutions.\n- Applies expertise in ways that are unique or innovative.\n- Is open to and builds upon new ideas and solutions offered by others."
+        },
+        {
+          "name": "Medium",
+          "description": "- Nurtures and develops promising ideas through prototyping and experimentation.\n- Challenges others to develop breakthrough solutions.\n- Ensures that varied perspectives are included in the process of innovation.\n- Encourages others to address challenges in new and better ways."
+        },
+        {
+          "name": "High",
+          "description": "- Commits resources to build a strong innovation portfolio and capitalize on new business opportunities.\n- Creates a culture that nurtures and rewards creativity and innovation.\n- Removes organizational barriers to creativity and innovation.\n- Challenges the organization to generate and implement breakthrough ideas and solutions."
+        }
+      ]
+    },
+    {
+      "id": "comp_12",
+      "name": "Customer Focus",
+      "description": "Building strong customer relationships and delivering customer -centric solutions.",
+      "category": "General Competency",
+      "proficiencyLevels": [
+        {
+          "name": "Critical",
+          "description": "- Seeks to understand the reasons for customers’ choices.\n- Asks questions to accurately identify customer needs.\n- Prioritizes work based on customer requests.\n- Meets customer requirements."
+        },
+        {
+          "name": "Low",
+          "description": "- Searches for ways to improve customer service.\n- Follows up with customers to ensure problems are solved.\n- Independently anticipates and meets customer needs.\n- Internalizes customer feedback and provides innovative ideas to meet their future needs."
+        },
+        {
+          "name": "Medium",
+          "description": "- Addresses gaps in the workgroup’s ability to meet emerging customer needs.\n- Gathers customer satisfaction input on behalf of the team.\n- Holds others accountable for meeting customer needs.\n- Aligns business processes to work with those of customers."
+        },
+        {
+          "name": "High",
+          "description": "- Creates a sense of urgency throughout the organization on the importance of meeting customer needs.\n- Ensures that organizational resources and support are focused on meeting customer needs.\n- Establishes organizational alliances or partnerships with key customers.\n- Fosters a customer- focused environment."
+        }
+      ]
+    },
+    {
+      "id": "comp_13",
+      "name": "Decision Quality",
+      "description": "Making good and timely decisions that keep the organization moving forward .",
+      "category": "General Competency",
+      "proficiencyLevels": [
+        {
+          "name": "Critical",
+          "description": "- Seeks advice when unsure about choosing a course of action.\n- Makes good routine decisions with coaching from others.\n- Tests ideas with others before acting in new or unfamiliar situations.\n- Uses rules and procedures to guide decisions and actions."
+        },
+        {
+          "name": "Low",
+          "description": "- Demonstrates good judgment in routine, day- to-day decision making.\n- Makes sound independent decisions in urgent and non-routine situations.\n- Considers various inputs, criteria, and trade-offs to arrive at effective decisions and recommendations.\n- Uses good judgment about whether to act independently or to escalate an issue."
+        },
+        {
+          "name": "Medium",
+          "description": "- Holds others accountable for making sound decisions that comply with policies and standards.\n- Is willing to make tough decisions and move them forward, even if they are unpopular.\n- Strikes the right balance between accepting workable solutions and pushing for better alternatives.\n- Synthesizes information, experience, and various inputs to determine the best course of action."
+        },
+        {
+          "name": "High",
+          "description": "- Creates an environment that promotes cross- functional analysis and decision making.\n- Holds leaders accountable to push decision making down to the most appropriate level.\n- Requires that organization-level\ndecisions be based on data and sound reasoning.\"\n- Willingly makes tough decisions and difficult trade-offs on behalf of the organization."
+        }
+      ]
+    },
+    {
+      "id": "comp_14",
+      "name": "Demonstrates Self-Awareness",
+      "description": "Using  a  combination  of  feedback  and  reflection  to  gain  productive  insight  into  personal  strengths and  weaknesses.",
+      "category": "General Competency",
+      "proficiencyLevels": [
+        {
+          "name": "Critical",
+          "description": "-  Asks for input about how own actions impact others.\n-  Reacts positively when constructive criticism is offered.\n-  Recognizes own mistakes and the need to operate differently.\n-  Seeks feedback from others."
+        },
+        {
+          "name": "Low",
+          "description": "-  Gathers balanced feedback from others and is open to their perspectives.\n-  Is aware of own impact on others.\n-  Knows personal strengths and weaknesses.\n-  Gains self-awareness and modifies behaviors based on feedback from others."
+        },
+        {
+          "name": "Medium",
+          "description": "-  Shares personal lessons with others to benefit them and encourage self- awareness.\n-  Knows personal strengths and weaknesses and modifies behaviors accordingly.\n-  Invites and incorporates constructive feedback from others.\n-  Takes ownership of how personal behavior and style impact other people."
+        },
+        {
+          "name": "High",
+          "description": "-  Shares personal lessons to benefit others in the organization.\n-  Is mindful of the impact own leadership style has on people and groups.\n-  Gathers feedback from different sources to get an accurate picture of own effectiveness.\n-  Leverages personal strengths and addresses limitations."
+        }
+      ]
+    },
+    {
+      "id": "comp_15",
+      "name": "Develops Talent",
+      "description": "Developing  people  both  to  meet  their  career  goals  and  the  organization’s  goals .",
+      "category": "General Competency",
+      "proficiencyLevels": [
+        {
+          "name": "Critical",
+          "description": "Not applicable"
+        },
+        {
+          "name": "Low",
+          "description": "-  Offers constructive ideas on how others can better achieve team or organizational objectives.\n-  Provides timely and respectful feedback to help others develop.\n-  Shares own experience and expertise with others.\n-  Supports the developmental efforts of others."
+        },
+        {
+          "name": "Medium",
+          "description": "-  Ensures that qualified successors are identified and ready for key team roles.\n-  Fosters an environment that encourages and enables others to build skills and develop their careers.\n-  Provides useful real-time coaching to others.\n-  Recommends developmental activities and stretch assignments to others."
+        },
+        {
+          "name": "High",
+          "description": "-  Creates a culture that emphasizes ongoing learning and development and reinforces its value to the organization.\n-  Coaches and mentors key talent.\n-  Sponsors organization- wide initiatives to ensure leadership excellence and ready talent.\n-  Champions organizational efforts that support the development of all employees."
+        }
+      ]
+    },
+    {
+      "id": "comp_16",
+      "name": "Directs Work",
+      "description": "Providing  direction,  delegating,  and  removing  obstacles  to  get  work  done .",
+      "category": "General Competency",
+      "proficiencyLevels": [
+        {
+          "name": "Critical",
+          "description": "Not applicable"
+        },
+        {
+          "name": "Low",
+          "description": "-  Addresses obstacles.\n-  Communicates clear accountabilities when working with others to enhance coordination and prevent duplication of effort.\n-  Keeps others informed of delays or problems that may affect their work.\n-  Seeks to clarify and understand desired outcomes for his/her role."
+        },
+        {
+          "name": "Medium",
+          "description": "-  Coordinates and integrates the work of others to avoid duplication of effort.\n-  Delegates responsibility and conveys clear expectations to others.\n-  Intervenes appropriately to remove obstacles.\n-  Monitors others’ progress."
+        },
+        {
+          "name": "High",
+          "description": "-  Creates a culture that ensures the right work is done at the right level.\n-  Eliminates barriers affecting organizational performance.\n-  Ensures others have the information, authority, and support needed to achieve objectives.\n-  Monitors performance indicators to keep up-to- date on progress on goals."
+        }
+      ]
+    },
+    {
+      "id": "comp_17",
+      "name": "Drives Engagement",
+      "description": "Creating  a  climate  where  people  are  motivated  to  do  their  best  to  help  the  organization  achieve  its objectives.",
+      "category": "General Competency",
+      "proficiencyLevels": [
+        {
+          "name": "Critical",
+          "description": "Not applicable"
+        },
+        {
+          "name": "Low",
+          "description": "-  Celebrates others’ successes.\n-  Helps others see why the work matters.\n-  Shares involvement and visibility with others.\n-  Draws a link between the work and own motivation."
+        },
+        {
+          "name": "Medium",
+          "description": "-  Empowers others with meaningful decision making and ownership.\n-  Ensures that all team members are motivated to work toward common goals.\n-  Celebrates the team’s successes along the way.\n-  Provides praise, recognition, and rewards for strong performance."
+        },
+        {
+          "name": "High",
+          "description": "-  Motivates others by appealing to deeply held values and goals.\n-  Creates a climate that makes work gratifying and enjoyable.\n-  Ensures that people in the organization feel their contributions are valued.\n-  Energizes the organization by clarifying the broader purpose and importance of the work."
+        }
+      ]
+    },
+    {
+      "id": "comp_18",
+      "name": "Drives Results",
+      "description": "Consistently achieving results, even under tough circumstances .",
+      "category": "General Competency",
+      "proficiencyLevels": [
+        {
+          "name": "Critical",
+          "description": "- Consistently meets the objectives of assigned tasks.\n- Maintains work focus despite obstacles or setbacks.\n- Puts in effort needed to meet goals and expected results.\n- Works steadily at unpleasant or routine tasks until they are completed."
+        },
+        {
+          "name": "Low",
+          "description": "- Demonstrates a strong drive to achieve meaningful results.\n- Drives tasks to successful completion and closure.\n- Shows determination in the face of obstacles and setbacks.\n- Sets high standards for own performance."
+        },
+        {
+          "name": "Medium",
+          "description": "- Pushes others to achieve results.\n- Leads others to persist despite setbacks or obstacles.\n- Fosters a sense of urgency in the team for reaching goals and meeting deadlines.\n- Drives a track record of success for the team."
+        },
+        {
+          "name": "High",
+          "description": "- Creates an organization that pushes forward in difficult circumstances.\n- Eliminates obstacles that affect organizational performance.\n- Gets results that have a clear, positive, and direct impact on business performance.\n- Drives the organization to achieve results."
+        }
+      ]
+    },
+    {
+      "id": "comp_19",
+      "name": "Drives Vision and Purpose",
+      "description": "Painting  a  compelling  picture  of  the  vision  and  strategy  that  motivates  others  to  action.",
+      "category": "General Competency",
+      "proficiencyLevels": [
+        {
+          "name": "Critical",
+          "description": "Not applicable"
+        },
+        {
+          "name": "Low",
+          "description": "-  Clearly articulates the vision and purpose of the organization.\n-  Ensures own work supports and aligns with the organization’s vision and with the workgroup’s mission.\n-  Conducts work with a meaningful sense of purpose.\n-  Supports the organization’s vision through day-to-day actions."
+        },
+        {
+          "name": "Medium",
+          "description": "-  Builds energy and optimism in others for the organization’s vision.\n-  Communicates the vision of the organization in a way others can relate to and buy into.\n-  Helps others envision a greater sense of what is possible for the organization’s future.\n-  Ensures that others understand how their efforts and contributions make a positive difference."
+        },
+        {
+          "name": "High",
+          "description": "-  Articulates a compelling vision of the positive impact the organization can make.\n-  Ensures clarity around the organization’s vision, mission, and values.\n-  Sustains organization-wide energy and optimism toward the future.\n-  Conveys commitment to the organization’s purpose and vision despite resistance or hardships."
+        }
+      ]
+    },
+    {
+      "id": "comp_20",
+      "name": "Ensures Accountability",
+      "description": "Holding self and others accountable to meet commitments.",
+      "category": "General Competency",
+      "proficiencyLevels": [
+        {
+          "name": "Critical",
+          "description": "- Communicates the status and completion of assignments.\n- Holds self-accountable for complying with policies, procedures, and work requirements.\n- Seeks input to ensure assignments are done correctly.\n- Takes responsibility for own actions."
+        },
+        {
+          "name": "Low",
+          "description": "- Monitors progress of performance and changes approach accordingly.\n- Takes ownership of own work.\n- Takes responsibility for successes and failures in own work.\n- Follows through on commitments."
+        },
+        {
+          "name": "Medium",
+          "description": "- Accepts responsibility for successes and failures of own work and the team’s work.\n- Holds self and team accountable for outcomes (e.g., achieving goals and complying with policies and procedures).\n- Monitors metrics and milestones to chart progress against expectations and accountabilities.\n- Designs feedback processes into the work."
+        },
+        {
+          "name": "High",
+          "description": "- Accepts responsibility for successes and failures of own work and the team’s work.\n- Holds self and team accountable for outcomes (e.g., achieving goals and complying with policies and procedures).\n- Monitors metrics and milestones to chart progress against expectations and accountabilities.\n- Designs feedback processes into the work."
+        }
+      ]
+    },
+    {
+      "id": "comp_21",
+      "name": "Financial Acumen",
+      "description": "Interpreting and applying understanding of key financial indicators to make better business decisions.",
+      "category": "General Competency",
+      "proficiencyLevels": [
+        {
+          "name": "Critical",
+          "description": "- Collects data used for key financial metrics.\n- Complies with budget requirements.\n- Draws accurate conclusions from available quantitative and financial data.\n- Learns the financial impact of own work."
+        },
+        {
+          "name": "Low",
+          "description": "- Identifies and estimates contributors to costs.\n- Accurately forecasts financial information like costs and revenue.\n- Makes prudent decisions regarding expenditures.\n- Uses financial and quantitative information to guide actions and performance."
+        },
+        {
+          "name": "Medium",
+          "description": "- Educates others on the importance of complying with budget requirements.\n- Holds people accountable for making good financial decisions.\n- Makes sense of financial data and its implications for the business.\n- Uses relevant financial and quantitative indicators to measure business performance."
+        },
+        {
+          "name": "High",
+          "description": "- Anticipates and addresses the downstream financial impact of key decisions.\n- Ensures analysis and accurate interpretation of financial indicators that impact the business.\n- Makes investments based on anticipated returns and risks.\n- Makes appropriate trade-offs between current financial performance and investments with long- term potential."
+        }
+      ]
+    },
+    {
+      "id": "comp_22",
+      "name": "Global Perspective",
+      "description": "Taking  a  broad  view  when  approaching  issues,  using  a  global  lens .",
+      "category": "General Competency",
+      "proficiencyLevels": [
+        {
+          "name": "Critical",
+          "description": "-  Considers issues from a broad point of view.\n-  Demonstrates curiosity about the differences found in other countries, cultures, and regions.\n-  Learns to navigate the global aspects of own work.\n-  Shows an interest in the global elements of the organization."
+        },
+        {
+          "name": "Low",
+          "description": "-  Adapts organizational practices to address unique differences and preferences of individual regions or countries.\n-  Addresses global factors in handling work.\n-  Can think globally.\n-  Looks toward the broadest possible view of an issue or challenge."
+        },
+        {
+          "name": "Medium",
+          "description": "-  Coaches the team to approach challenges using a broad global perspective.\n-  Understands the impact of global events and trends on the business.\n-  Makes needed adjustments in the team/organization to operate effectively in both local and global environments.\n-  Takes global implications into account when making plans and decisions."
+        },
+        {
+          "name": "High",
+          "description": "-  Strategically addresses global events and trends that impact the industry or organization.\n-  Challenges the organization to address issues using a broad global view.\n-  Ensures alignment with the legal, financial, and operational policies of the regions/countries in which the organization operates.\n-  Directs others to anticipate how other cultures/countries will\nreact to the organization’s offerings and practices, making adjustments where needed."
+        }
+      ]
+    },
+    {
+      "id": "comp_23",
+      "name": "Instills Trust",
+      "description": "Gaining the confidence and trust of others through honesty, integrity, and authenticity.",
+      "category": "General Competency",
+      "proficiencyLevels": [
+        {
+          "name": "Critical",
+          "description": "- Follows stated policies and practices.\n- Displays consistency between words and deeds.\n- Is honest and direct in dealing with people.\n- Is reliable; can be counted on to honor agreements and commitments."
+        },
+        {
+          "name": "Low",
+          "description": "- Is honest and straightforward when working with others.\n- Honors agreements and commitments, even when working through competing priorities.\n- Shows consistency between words and actions.\n- Maintains integrity and professional codes of conduct."
+        },
+        {
+          "name": "Medium",
+          "description": "- Demonstrates consistency between words and actions, gaining others' trust.\n- Models reliability and ensures that the team meets its commitments.\n- Maintains honesty and authenticity and encourages others to do the same.\n- Is trusted to represent or protect the interests of others fairly."
+        },
+        {
+          "name": "High",
+          "description": "- Acts in the best interests of others and the organization, even when it conflicts with self- interests.\n- Models dependability and expects others to live up to their agreements.\n- Shows consistency between words and actions, gaining people's trust and respect.\n- Is truthful and transparent, fostering a sense of trust in the organization and its leadership."
+        }
+      ]
+    },
+    {
+      "id": "comp_24",
+      "name": "Interpersonal Savvy",
+      "description": "Relating  openly  and  comfortably  with  diverse  groups  of  people.",
+      "category": "General Competency",
+      "proficiencyLevels": [
+        {
+          "name": "Critical",
+          "description": "-  Develops effective working relationships with others.\n-  Begins conversations and builds rapport with others when given the opportunity.\n-  Reacts tactfully when receiving advice, instruction, or critical feedback.\n-  Relates to people in an open, friendly, and accepting manner."
+        },
+        {
+          "name": "Low",
+          "description": "-  Builds rapport by identifying common interests and priorities.\n-  Exercises diplomacy in difficult interpersonal situations.\n-  Relates well to a broad variety of people inside and outside the organization.\n-  Responds appropriately to social cues."
+        },
+        {
+          "name": "Medium",
+          "description": "-  Adapts to complex interpersonal dynamics in group settings.\n-  Connects with others by taking a genuine interest in their desires and concerns.\n-  Helps team members learn the interpersonal skills needed to work effectively with others.\n-  Addresses difficult interpersonal situations within the team in an open, sensitive, and fair manner."
+        },
+        {
+          "name": "High",
+          "description": "-  Builds rapport and relationships with a wide variety of people.\n-  Builds relationships in the community.\n-  Represents the organization with diplomacy and tact in highly visible situations.\n-  Manages interpersonal and group dynamics inside and outside the organization."
+        }
+      ]
+    },
+    {
+      "id": "comp_25",
+      "name": "Manages Ambiguity",
+      "description": "Operating Effectively, even when things are not certain or the way forward is not clear .",
+      "category": "General Competency",
+      "proficiencyLevels": [
+        {
+          "name": "Critical",
+          "description": "- Seeks appropriate direction when things are unclear.\n- Responds productively to changing priorities.\n- Is comfortable moving forward on tasks before all the details are known.\n- Recognizes the benefits of change despite the uncertainty it brings."
+        },
+        {
+          "name": "Low",
+          "description": "- Accepts needed change despite the uncertainty it brings.\n- Constructively deals with problems that don’t have clear solutions or outcomes.\n- Remains calm and productive during transitions or changing circumstances.\n- Works to clarify situations where information, instructions, or objectives are ambiguous."
+        },
+        {
+          "name": "Medium",
+          "description": "- Looks for opportunities inherent in the unknown and takes steps to capitalize on them.\n- Coaches others in finding solutions and accomplishing goals despite incomplete information.\n- During transitions or chaotic conditions, remains calm and guides the team forward.\n- Embraces ambiguity and change, helping the workgroup adapt and remain productive."
+        },
+        {
+          "name": "High",
+          "description": "- Embraces change; able to make decisions and act without complete information or a clear road map.\n- Conveys stability and provides direction in evolving or uncertain times.\n- Finds opportunities inherent in the unknown and guides the organization to capitalize on them.\n- Effectively manages the stress that accompanies transitions and change, and ensures that the organization helps others adapt productively."
+        }
+      ]
+    },
+    {
+      "id": "comp_26",
+      "name": "Manages Complexity",
+      "description": "Making  sense  of  complex,  high  quantity,  and  sometimes  contradictory  information  to  effectively solve  problems.",
+      "category": "General Competency",
+      "proficiencyLevels": [
+        {
+          "name": "Critical",
+          "description": "-  Collects relevant information to understand intricate problems and issues.\n-  Learns and uses systematic problem- solving tools and methods.\n-  Recognizes symptoms that indicate problems.\n-  Separates relevant facts from less essential or unnecessary data when solving problems."
+        },
+        {
+          "name": "Low",
+          "description": "-  Assesses complex issues from multiple angles in order to get the complete picture.\n-  Evaluates the potential consequences and implications of different options.\n-  Identifies the underlying issues and root causes of problems.\n-  Incorporates new information and concepts when solving problems."
+        },
+        {
+          "name": "Medium",
+          "description": "-  Coaches others to analyze information and evaluate alternatives to solve problems.\n-  Defines complex issues clearly despite incomplete or ambiguous information.\n-  Draws on multiple perspectives and sources to better understand and solve problems.\n-  Asks the right questions to stimulate critical thinking and help others accurately analyze complex situations."
+        },
+        {
+          "name": "High",
+          "description": "-  Approaches problems from a systems perspective, defining connections, linkages, and interdependencies.\n-  Obtains resources and establishes organizational processes that enable effective information gathering.\n-  Anticipates complex challenges the organization may face in the future.\n-  Synthesizes information from many sources to arrive at a broad and deep understanding of complex issues."
+        }
+      ]
+    },
+    {
+      "id": "comp_27",
+      "name": "Manages Conflict",
+      "description": "Handling conflict situations effectively, with a minimum of noise .",
+      "category": "General Competency",
+      "proficiencyLevels": [
+        {
+          "name": "Critical",
+          "description": "- Asks for advice on how to handle situations where there is conflict or disagreement.\n- Maintains composure in situations where there is a conflict or a difference of opinion.\n- Rebounds from conflicts and does not hold grudges.\n- Tactfully and sensitively expresses disagreement."
+        },
+        {
+          "name": "Low",
+          "description": "- Addresses challenging situations by remaining open to alternative views.\n- Expresses differing viewpoints tactfully to avoid creating unnecessary conflict.\n- Remains positive and respectful in the midst of conflict.\n- Seeks to find common ground with others to build agreement."
+        },
+        {
+          "name": "Medium",
+          "description": "- Confronts people whose behavior creates destructive conflict.\n- Seeks win-win solutions when settling disputes.\n- Anticipates and resolves potential conflicts with minimal disruption.\n- Leverages difficult or tense circumstances to enhance relationships."
+        },
+        {
+          "name": "High",
+          "description": "- Can skillfully defuse high- tension situations.\n- Creates an environment in which conflict is used constructively to generate novel solutions.\n- Resolves organizational issues equitably.\n- Facilitates consensus among multiple stakeholders by identifying common ground."
+        }
+      ]
+    },
+    {
+      "id": "comp_28",
+      "name": "Nimble Learning",
+      "description": "Actively  learning  through  experimentation  when  tackling  new  problems,  using  both  successes  and failures  as  learning  fodder.",
+      "category": "General Competency",
+      "proficiencyLevels": [
+        {
+          "name": "Critical",
+          "description": "-  Asks questions to learn from others’ experience.\n-  Sees mistakes as part of the learning process.\n-  Is comfortable dealing with first-time or unusual problems.\n-  Quickly grasps the essence of new issues and concepts."
+        },
+        {
+          "name": "Low",
+          "description": "-  Applies new concepts and principles to address problems.\n-  Enjoys experimenting with test cases as a means to learn.\n-  Learns from mistakes and adjusts accordingly.\n-  Learns quickly when facing new situations."
+        },
+        {
+          "name": "Medium",
+          "description": "-  Supports experimentation as a way to find the best solution.\n-  Shares lessons learned from both successes and failures.\n-  Creates opportunities for self and others to try new things.\n-  Applies the lessons from different experiences to new situations."
+        },
+        {
+          "name": "High",
+          "description": "-  Ensures that the organization has the means to systematically gather and apply lessons learned.\n-  Models the value of exploration and learning.\n-  Creates a culture where experimenting to find new solutions is valued and supported.\n-  Fosters an organizational environment that encourages and rewards learning."
+        }
+      ]
+    },
+    {
+      "id": "comp_29",
+      "name": "Optimizes Work Processes",
+      "description": "Knowing  the  most  effective  and  efficient  processes  to  get  things  done,  with  a  focus  on  continuous improvement.",
+      "category": "General Competency",
+      "proficiencyLevels": [
+        {
+          "name": "Critical",
+          "description": "-    Adheres to defined and communicated standards, methods, and procedures.\n-    Informs others about process problems.\n-    Seeks ways to work better within the processes.\n-    Suggests process and practice improvement ideas for own work area."
+        },
+        {
+          "name": "Low",
+          "description": "-    Addresses process breakdowns with speed and thoroughness.\n-    Uses process analysis methods like metrics and benchmarks.\n-    Focuses efforts on both processes and results.\n-    Modifies own work activities and methods to eliminate wasted effort and inefficiencies."
+        },
+        {
+          "name": "Medium",
+          "description": "-    Analyzes problems and process breakdowns to ensure that improvements are made.\n-    Focuses others on driving continuous improvement and quality outcomes.\n-    Employs systems, processes, and workflows that help others deliver results without intensive managerial involvement.\n-    Optimizes and integrates large-scale systems to improve quality and service."
+        },
+        {
+          "name": "High",
+          "description": "-    Ensures organization-wide adoption of best practices and lessons learned.\n-    Leads the organization in determining which work processes must remain in- house vs. those that can be outsourced or discarded.\n-    Fosters an environment within the organization that promotes continuous improvement and quality outcomes.\n-    Works with internal and external partners to ensure coordinated processes throughout the supply chain."
+        }
+      ]
+    },
+    {
+      "id": "comp_30",
+      "name": "Organizational Savvy",
+      "description": "Maneuvering  comfortably  through  complex  policy,  process,  and  people -related  organizational dynamics.",
+      "category": "General Competency",
+      "proficiencyLevels": [
+        {
+          "name": "Critical",
+          "description": "-    Ensures organization-wide adoption of best practices and lessons learned.\n-    Leads the organization in determining which work processes must remain in- house vs. those that can be outsourced or discarded.\n-    Fosters an environment within the organization that promotes continuous improvement and quality outcomes.\n-    Works with internal and external partners to ensure coordinated processes throughout the supply chain."
+        },
+        {
+          "name": "Low",
+          "description": "-  Builds support for ideas among key stakeholders and decision makers.\n-  Grasps the organizational culture and politics.\n-  Knows who to involve to remove barriers and get things done.\n-  Can anticipate and address organizational and political difficulties or resistance."
+        },
+        {
+          "name": "Medium",
+          "description": "-  Advises others on how the organization’s formal and informal power structure can influence business decisions.\n-  Builds coalitions needed to obtain resources and approvals.\n-  Enlists advocates to champion ideas and initiatives.\n-  Helps others maneuver through the organization’s culture and politics."
+        },
+        {
+          "name": "High",
+          "description": "-  Navigates internal and external political realities that can advance or hinder organizational initiatives.\n-  Gains the favor of key stakeholders to accomplish goals.\n-  Uses formal and informal authority to gain buy-in and positively influence the direction of the organization.\n-  Understands how to use power and influence to drive organizational priorities."
+        }
+      ]
+    },
+    {
+      "id": "comp_31",
+      "name": "Persuades",
+      "description": "Using  compelling  arguments  to  gain  the  support  and  commitment  of  others.",
+      "category": "General Competency",
+      "proficiencyLevels": [
+        {
+          "name": "Critical",
+          "description": "-  Offers useful ideas for positioning issues and persuading others.\n-  Links ideas and recommendations to needs of colleagues and stakeholders to gain their support.\n-  Shares own point of view with confidence.\n-  Provides good reasons for ideas and suggestions."
+        },
+        {
+          "name": "Low",
+          "description": "-  Negotiates effectively for needed resources.\n-  Makes appropriate compromises to arrive at solutions with others.\n-  Provides sound rationale for recommendations to gain others’ support and commitment.\n-  Convinces others to support his/her positions or recommendations."
+        },
+        {
+          "name": "Medium",
+          "description": "-  Ensures that positions satisfy the needs, interests, and concerns of others.\n-  Promotes or asserts positions with conviction and a compelling rationale.\n-  Is able to win concessions during negotiations without damaging relationships.\n-  Persists and holds firm appropriately without too much pushing or compromising."
+        },
+        {
+          "name": "High",
+          "description": "-  Ensures that proposals or arguments are supported by a logical and compelling business case.\n-  Negotiates skillfully in tough situations with internal and external groups.\n-  Gains buy-in from others and convinces them to take recommended action.\n-  Builds a broad base of support for positions both inside and outside the organization."
+        }
+      ]
+    },
+    {
+      "id": "comp_32",
+      "name": "Plans and Aligns",
+      "description": "Planning and prioritizing work to meet commitments aligned with organizational goals .",
+      "category": "General Competency",
+      "proficiencyLevels": [
+        {
+          "name": "Critical",
+          "description": "- Finds out the proper sequence of activities to efficiently complete tasks.\n- Clarifies the tasks that are needed to complete assignments.\n- Seeks the support and resources needed to carry out plans.\n- Aligns own efforts with others’ activities to improve coordination of plans and projects."
+        },
+        {
+          "name": "Low",
+          "description": "- Aligns own work plans and priorities with those of other units.\n- Balances the need for adequate planning with the need for action.\n- Creates a realistic time line with steps outlined in the right sequence.\n- Anticipates and minimizes bottlenecks or delays."
+        },
+        {
+          "name": "Medium",
+          "description": "- Addresses risks and contingencies as part of the planning process.\n- Finds the right balance between sticking to plans and adjusting them to changing conditions.\n- Ensures that the team’s plans and priorities are aligned and coordinated across different areas of the organization.\n- Plans ahead to make sure critical resources are lined up for organizational priorities."
+        },
+        {
+          "name": "High",
+          "description": "- Allocates organizational resources in alignment with strategic plans and priorities.\n- Conveys clear objectives so the organization can plan and prioritize actions to achieve them.\n- Ensures that plans are aligned and coordinated across the organization.\n- Sets aggressive yet realistic time frames for achieving strategic objectives."
+        }
+      ]
+    },
+    {
+      "id": "comp_33",
+      "name": "Resourcefulness",
+      "description": "Securing and deploying resources effectively and efficiently.",
+      "category": "General Competency",
+      "proficiencyLevels": [
+        {
+          "name": "Critical",
+          "description": "- Is efficient with resources when accomplishing tasks.\n- Is able to juggle various priorities and workplace demands.\n- Seeks additional resources to complete tasks when needed.\n- Gets the most out of the available resources."
+        },
+        {
+          "name": "Low",
+          "description": "- Minimizes the waste of available resources.\n- Coordinates multiple priorities and activities to accomplish goals.\n- Identifies and obtains the resources (e.g., funding, equipment, support) needed to accomplish assignments.\n- Finds ways to get work done within limited resources."
+        },
+        {
+          "name": "Medium",
+          "description": "- Balances multiple projects or work streams to ensure progress is made.\n- Pushes others to find ways to conserve resources.\n- Marshals the resources (e.g., funding, equipment, processes, staffing) needed to accomplish team objectives.\n- Gets the most out of the available team resources."
+        },
+        {
+          "name": "High",
+          "description": "- Orchestrates organizational resources and activities to accomplish objectives.\n- Builds a culture that seeks to conserve and optimize resources.\n- Identifies and secures organizational resources (e.g., talent, funding, technology) needed to achieve organizational objectives.\n- Optimizes resources across multiple organizational priorities."
+        }
+      ]
+    },
+    {
+      "id": "comp_34",
+      "name": "Self-development",
+      "description": "Actively  seeking  new  ways  to  grow  and  be  challenged  using  both  formal  and  informal development  channels.",
+      "category": "General Competency",
+      "proficiencyLevels": [
+        {
+          "name": "Critical",
+          "description": "-  Asks for help with personal development efforts.\n-  Pursues ways to develop new skills.\n-  Seeks opportunities to acquire new knowledge and skills.\n-  Seeks opportunities to apply new skills on the job."
+        },
+        {
+          "name": "Low",
+          "description": "-  Seeks feedback on areas to develop.\n-  Identifies clear development goals and tactics.\n-  Takes initiative to practice and apply new knowledge and skills.\n-  Seeks additional job responsibilities to broaden skills."
+        },
+        {
+          "name": "Medium",
+          "description": "-  Aligns own development plans with the goals and values of the organization.\n-  Continuously improves own leadership capabilities.\n-  Models personal development by continuously expanding own knowledge and skills.\n-  Pursues challenging assignments and career opportunities that stretch and build own capabilities."
+        },
+        {
+          "name": "High",
+          "description": "-  Anticipates how changes in the organization or industry may impact own developmental needs.\n-  Continuously improves own leadership skills and abilities.\n-  Shapes an organizational culture that supports personal development.\n-  Pursues challenging assignments and career opportunities that build own capabilities."
+        }
+      ]
+    },
+    {
+      "id": "comp_35",
+      "name": "Situational Adaptability",
+      "description": "Adapting approach and demeanor in real time to match the shifting demands of different situations.",
+      "category": "General Competency",
+      "proficiencyLevels": [
+        {
+          "name": "Critical",
+          "description": "- Adjusts approach in different or changing situations.\n- Learns to be flexible in completing job assignments.\n- Takes cues from others about changes in the situation.\n- Accepts direction on how to adapt approach to changing situations."
+        },
+        {
+          "name": "Low",
+          "description": "- Demonstrates flexibility of responses to different situations.\n- Recognizes cues that suggest a change in approach or behavior is needed.\n- Adapts to changing needs, conditions, priorities, or opportunities.\n- Monitors how well approach is working to see if change is needed."
+        },
+        {
+          "name": "Medium",
+          "description": "- Adapts or shifts priorities in response to the needs of clients, constituents, or the organization.\n- Helps the workgroup adapt approach to new situations.\n- Knows when to shift approach and when to stay the course in the face of changing demands.\n- Sets an example of adaptability."
+        },
+        {
+          "name": "High",
+          "description": "- Adapts leadership style in response to a broad range of different situations and challenges.\n- Brings an approach to flexibility that becomes ingrained in the organization’s structures, systems, and culture.\n- Guides the organization to remain flexible in a changing, competitive environment by being a role model for adaptability.\n- Initiates change in response to the cues in the external environment."
+        }
+      ]
+    },
+    {
+      "id": "comp_36",
+      "name": "Strategic Mindset",
+      "description": "Seeing ahead to future possibilities and translating them into breakthrough strategies .",
+      "category": "General Competency",
+      "proficiencyLevels": [
+        {
+          "name": "Critical",
+          "description": "- Considers how the workgroup's performance may be improved in the future.\n- Understands how own work fits into the bigger picture and strategy.\n- Considers how own actions can help the organization succeed.\n- Pays attention to trends and issues that may impact own work in the future."
+        },
+        {
+          "name": "Low",
+          "description": "- Considers industry and market trends when making decisions.\n- Identifies which efforts will have the greatest strategic impact on the organization.\n- Balances strategic concerns with day-to-day activities.\n- Considers future possibilities and scenarios that may affect the team/organization."
+        },
+        {
+          "name": "Medium",
+          "description": "- Clarifies the organization’s vision and strategy, and ensures that efforts are prioritized to support them.\n- Creates strategies that leverage competitive advantages and emerging trends.\n- Leads the team to pursue possibilities that will create sustainable value.\n- Thinks beyond the day-to- day, taking a long-term, big-picture view of the business."
+        },
+        {
+          "name": "High",
+          "description": "- Leverages the organization’s key differentiators to develop a viable long-term strategy.\n- Explores future scenarios and possibilities to help the organization respond to change and shape the future.\n- Revisits and updates business strategies in response to evolving market dynamics and organizational needs.\n- Develops and integrates organizational strategies to achieve and sustain competitive advantage."
+        }
+      ]
+    },
+    {
+      "id": "comp_37",
+      "name": "Tech Savvy",
+      "description": "Anticipating and adopting innovations in business -building digital and technology applications .",
+      "category": "General Competency",
+      "proficiencyLevels": [
+        {
+          "name": "Critical",
+          "description": "- Uses the latest technologies that directly impact performance.\n- Readily learns and adopts new technologies.\n- Identifies technologies that can help complete tasks.\n- Understands the terminology of the latest technologies."
+        },
+        {
+          "name": "Low",
+          "description": "- Chooses the right technologies and tools to improve performance.\n- Uses digital and social media in the right way, recognizing the implications of misuse.\n- Identifies and adopts new technologies, technical skills, and capabilities that can benefit performance.\n- Uses technologies to stay on the cutting edge of best practices."
+        },
+        {
+          "name": "Medium",
+          "description": "- Educates others on the use and value of appropriate technologies to improve business results and team performance.\n- Provides resources to support the use of beneficial technologies.\n- Leverages new technologies and innovations to improve the effectiveness of the group and business.\n- Discerns high-impact technologies from fads to focus investments on best approaches."
+        },
+        {
+          "name": "High",
+          "description": "- Anticipates how advancing technologies will create new competition and considers how to respond.\n- Leverages a broad social and digital footprint to effectively influence external stakeholders.\n- Keeps up-to-date on the latest technology trends pertinent to the business.\n- Champions and supports the use of the latest technologies that provide potential improvements to results."
+        }
+      ]
+    },
+    {
+      "id": "comp_38",
+      "name": "Values Differences",
+      "description": "Recognizing the value that different perspectives and cultures bring to an organization.",
+      "category": "General Competency",
+      "proficiencyLevels": [
+        {
+          "name": "Critical",
+          "description": "- Shows interest in working with people with a variety of backgrounds and perspectives.\n- Avoids using stereotypes.\n- Shows respect when interacting with individuals and groups from diverse backgrounds.\n- Learns from others who have different perspectives, backgrounds, and/or styles."
+        },
+        {
+          "name": "Low",
+          "description": "- Behaves with sensitivity toward differences in cultural norms, expectations, and ways of communicating.\n- Challenges stereotyping or offensive comments.\n- Seeks out the diverse perspectives and talents of others.\n- Works effectively with others who have different perspectives, backgrounds, and/or styles."
+        },
+        {
+          "name": "Medium",
+          "description": "- Encourages others to stay open to, seek, and learn from diverse perspectives.\n- Creates an environment in which differences are openly shared, embraced, and incorporated into the team’s activities.\n- Helps people understand the business value of diversity.\n- Interacts with others in ways that are sensitive to cultural norms and expectations."
+        },
+        {
+          "name": "High",
+          "description": "- Sponsors and mentors people from a variety of backgrounds and perspectives.\n- Cultivates an environment that makes others feel valued, regardless of their background.\n- Fosters a culture that encourages and supports diversity and inclusion.\n- Applies understanding of cultural differences to create value for the organization."
+        }
+      ]
+    }
+  ],
+  "mapping": {
+    "Action Oriented": {
+      "support": 1,
+      "supervisory": 2,
+      "senior_management": 3,
+      "leadership": 4
+    },
+    "Attracts Top Talent": {
+      "support": null,
+      "supervisory": 2,
+      "senior_management": 3,
+      "leadership": 4
+    },
+    "Balances Stakeholders": {
+      "support": 1,
+      "supervisory": 2,
+      "senior_management": 3,
+      "leadership": 4
+    },
+    "Being Resilient": {
+      "support": 1,
+      "supervisory": 2,
+      "senior_management": 3,
+      "leadership": 4
+    },
+    "Builds Effective Teams": {
+      "support": 1,
+      "supervisory": 2,
+      "senior_management": 3,
+      "leadership": 4
+    },
+    "Builds Networks": {
+      "support": 1,
+      "supervisory": 2,
+      "senior_management": 3,
+      "leadership": 4
+    },
+    "Business Insight": {
+      "support": 1,
+      "supervisory": 2,
+      "senior_management": 3,
+      "leadership": 4
+    },
+    "Collaborates": {
+      "support": 1,
+      "supervisory": 2,
+      "senior_management": 3,
+      "leadership": 4
+    },
+    "Communicates Effectively": {
+      "support": 1,
+      "supervisory": 2,
+      "senior_management": 3,
+      "leadership": 4
+    },
+    "Courage": {
+      "support": 1,
+      "supervisory": 2,
+      "senior_management": 3,
+      "leadership": 4
+    },
+    "Cultivates Innovation": {
+      "support": 1,
+      "supervisory": 2,
+      "senior_management": 3,
+      "leadership": 4
+    },
+    "Customer Focus": {
+      "support": 1,
+      "supervisory": 2,
+      "senior_management": 3,
+      "leadership": 4
+    },
+    "Decision Quality": {
+      "support": 1,
+      "supervisory": 2,
+      "senior_management": 3,
+      "leadership": 4
+    },
+    "Demonstrates Self-Awareness": {
+      "support": 1,
+      "supervisory": 2,
+      "senior_management": 3,
+      "leadership": 4
+    },
+    "Develops Talent": {
+      "support": null,
+      "supervisory": 2,
+      "senior_management": 3,
+      "leadership": 4
+    },
+    "Directs Work": {
+      "support": null,
+      "supervisory": 2,
+      "senior_management": 3,
+      "leadership": 4
+    },
+    "Drives Engagement": {
+      "support": null,
+      "supervisory": 2,
+      "senior_management": 3,
+      "leadership": 4
+    },
+    "Drives Results": {
+      "support": 1,
+      "supervisory": 2,
+      "senior_management": 3,
+      "leadership": 4
+    },
+    "Drives Vision and Purpose": {
+      "support": null,
+      "supervisory": 2,
+      "senior_management": 3,
+      "leadership": 4
+    },
+    "Ensures Accountability": {
+      "support": 1,
+      "supervisory": 2,
+      "senior_management": 3,
+      "leadership": 4
+    },
+    "Financial Acumen": {
+      "support": 1,
+      "supervisory": 2,
+      "senior_management": 3,
+      "leadership": 4
+    },
+    "Global Perspective": {
+      "support": 1,
+      "supervisory": 2,
+      "senior_management": 3,
+      "leadership": 4
+    },
+    "Instills Trust": {
+      "support": 1,
+      "supervisory": 2,
+      "senior_management": 3,
+      "leadership": 4
+    },
+    "Interpersonal Savvy": {
+      "support": 1,
+      "supervisory": 2,
+      "senior_management": 3,
+      "leadership": 4
+    },
+    "Manages Ambiguity": {
+      "support": 1,
+      "supervisory": 2,
+      "senior_management": 3,
+      "leadership": 4
+    },
+    "Manages Complexity": {
+      "support": 1,
+      "supervisory": 2,
+      "senior_management": 3,
+      "leadership": 4
+    },
+    "Manages Conflict": {
+      "support": 1,
+      "supervisory": 2,
+      "senior_management": 3,
+      "leadership": 4
+    },
+    "Nimble Learning": {
+      "support": 1,
+      "supervisory": 2,
+      "senior_management": 3,
+      "leadership": 4
+    },
+    "Optimizes Work Processes": {
+      "support": 1,
+      "supervisory": 2,
+      "senior_management": 3,
+      "leadership": 4
+    },
+    "Organizational Savvy": {
+      "support": 1,
+      "supervisory": 2,
+      "senior_management": 3,
+      "leadership": 4
+    },
+    "Persuades": {
+      "support": 1,
+      "supervisory": 2,
+      "senior_management": 3,
+      "leadership": 4
+    },
+    "Plans and Aligns": {
+      "support": 1,
+      "supervisory": 2,
+      "senior_management": 3,
+      "leadership": 4
+    },
+    "Resourcefulness": {
+      "support": 1,
+      "supervisory": 2,
+      "senior_management": 3,
+      "leadership": 4
+    },
+    "Self-development": {
+      "support": 1,
+      "supervisory": 2,
+      "senior_management": 3,
+      "leadership": 4
+    },
+    "Situational Adaptability": {
+      "support": 1,
+      "supervisory": 2,
+      "senior_management": 3,
+      "leadership": 4
+    },
+    "Strategic Mindset": {
+      "support": 1,
+      "supervisory": 2,
+      "senior_management": 3,
+      "leadership": 4
+    },
+    "Tech Savvy": {
+      "support": 1,
+      "supervisory": 2,
+      "senior_management": 3,
+      "leadership": 4
+    },
+    "Values Differences": {
+      "support": 1,
+      "supervisory": 2,
+      "senior_management": 3,
+      "leadership": 4
+    }
+  },
+  "proficiency_levels": {
+    "1": {
+      "name": "Contributing Dependently (Phụ thuộc)",
+      "color": "#DE350B",
+      "description": "Cấp độ 1 - Nhân viên cần giám sát và hướng dẫn"
+    },
+    "2": {
+      "name": "Contributing Independently (Độc lập)",
+      "color": "#FFAB00",
+      "description": "Cấp độ 2 - Nhân viên hoạt động độc lập"
+    },
+    "3": {
+      "name": "Contributing Through Others (Qua người khác)",
+      "color": "#00B8D9",
+      "description": "Cấp độ 3 - Nhân viên có khả năng quản lý"
+    },
+    "4": {
+      "name": "Contributing Strategically (Chiến lược)",
+      "color": "#36B37E",
+      "description": "Cấp độ 4 - Nhân viên lãnh đạo chiến lược"
+    }
+  },
+  "roles": [
+    "Support",
+    "Supervisory",
+    "Senior Management",
+    "Leadership"
+  ],
+  "positions": [
+    {
+      "id": "POS001",
+      "code": "sales",
+      "name": "Sales",
+      "description": "Chuyên viên bán hàng, phát triển khách hàng mới, duy trì mối quan hệ khách hàng hiện tại",
+      "level": "staff"
+    },
+    {
+      "id": "POS002",
+      "code": "server",
+      "name": "Server",
+      "description": "Nhân viên phục vụ, hỗ trợ khách hàng, trình bày sản phẩm",
+      "level": "entry"
+    },
+    {
+      "id": "POS003",
+      "code": "barista",
+      "name": "Barista",
+      "description": "Nhân viên pha chế, tạo ra các đồ uống chất lượng cao, phục vụ khách hàng",
+      "level": "entry"
+    }
+  ],
+  "stores": [
+    {
+      "id": "SG01",
+      "code": "SG-TPHCM-001",
+      "name": "Cửa hàng TP. Hồ Chí Minh - Chi nhánh 1",
+      "region": "Miền Nam",
+      "address": "123 Đường Nguyễn Huệ, Quận 1, TP. Hồ Chí Minh",
+      "phone": "0838123456",
+      "manager": "Trần Minh Châu",
+      "employeeCount": 8,
+      "status": "active"
+    },
+    {
+      "id": "SG02",
+      "code": "SG-TPHCM-002",
+      "name": "Cửa hàng TP. Hồ Chí Minh - Chi nhánh 2",
+      "region": "Miền Nam",
+      "address": "456 Đường Lê Lợi, Quận 1, TP. Hồ Chí Minh",
+      "phone": "0838234567",
+      "manager": "",
+      "employeeCount": 6,
+      "status": "active"
+    },
+    {
+      "id": "HN01",
+      "code": "HN-HANOI-001",
+      "name": "Cửa hàng Hà Nội - Chi nhánh 1",
+      "region": "Miền Bắc",
+      "address": "789 Đường Trần Hưng Đạo, Hoàn Kiếm, Hà Nội",
+      "phone": "0243456789",
+      "manager": "",
+      "employeeCount": 7,
+      "status": "active"
+    },
+    {
+      "id": "HN02",
+      "code": "HN-HANOI-002",
+      "name": "Cửa hàng Hà Nội - Chi nhánh 2",
+      "region": "Miền Bắc",
+      "address": "101 Đường Hàng Bông, Hoàn Kiếm, Hà Nội",
+      "phone": "0243567890",
+      "manager": "Hoàng Minh Tú",
+      "employeeCount": 5,
+      "status": "active"
+    },
+    {
+      "id": "DN01",
+      "code": "DN-DANANG-001",
+      "name": "Cửa hàng Đà Nẵng - Chi nhánh 1",
+      "region": "Miền Trung",
+      "address": "202 Đường Nguyễn Huệ, Hải Châu, Đà Nẵng",
+      "phone": "0236789012",
+      "manager": "",
+      "employeeCount": 4,
+      "status": "active"
+    }
+  ],
+  "employees": [
+    {
+      "id": "EMP001",
+      "name": "Trần Minh Châu",
+      "email": "tran.minh.chau@company.com",
+      "phone": "0912345678",
+      "position": "sales",
+      "store": "SG01",
+      "hireDate": "2023-01-15",
+      "department": "Sales & Marketing"
+    },
+    {
+      "id": "EMP002",
+      "name": "Nguyễn Văn A",
+      "email": "nguyen.van.a@company.com",
+      "phone": "0913456789",
+      "position": "server",
+      "store": "SG01",
+      "hireDate": "2023-02-20",
+      "department": "Retail"
+    },
+    {
+      "id": "EMP003",
+      "name": "Phạm Thị B",
+      "email": "pham.thi.b@company.com",
+      "phone": "0914567890",
+      "position": "barista",
+      "store": "SG01",
+      "hireDate": "2023-03-10",
+      "department": "Operations"
+    },
+    {
+      "id": "EMP004",
+      "name": "Hoàng Minh Tú",
+      "email": "hoang.minh.tu@company.com",
+      "phone": "0915678901",
+      "position": "sales",
+      "store": "HN02",
+      "hireDate": "2023-04-05",
+      "department": "Sales & Marketing"
+    },
+    {
+      "id": "EMP005",
+      "name": "Lê Thị C",
+      "email": "le.thi.c@company.com",
+      "phone": "0916789012",
+      "position": "server",
+      "store": "HN02",
+      "hireDate": "2023-05-12",
+      "department": "Retail"
+    },
+    {
+      "id": "EMP006",
+      "name": "Vũ Minh D",
+      "email": "vu.minh.d@company.com",
+      "phone": "0917890123",
+      "position": "barista",
+      "store": "HN01",
+      "hireDate": "2023-06-18",
+      "department": "Operations"
+    },
+    {
+      "id": "EMP007",
+      "name": "Đặng Thị E",
+      "email": "dang.thi.e@company.com",
+      "phone": "0918901234",
+      "position": "sales",
+      "store": "DN01",
+      "hireDate": "2023-07-22",
+      "department": "Sales & Marketing"
+    }
+  ],
+  "assessments": [
+    {
+      "id": "ASS001",
+      "employeeId": "EMP001",
+      "employeeName": "Trần Minh Châu",
+      "evaluatorId": "ADM001",
+      "evaluatorName": "Quản trị viên hệ thống",
+      "date": "2025-12-01",
+      "competencyRatings": [
+        {
+          "competencyId": "comp_1",
+          "competencyName": "Action Oriented",
+          "ratedLevel": "High",
+          "comment": "Nhân viên luôn chủ động trong công việc, không bao giờ trì hoãn"
+        },
+        {
+          "competencyId": "comp_3",
+          "competencyName": "Customer Focus",
+          "ratedLevel": "High",
+          "comment": "Luôn tập trung vào nhu cầu của khách hàng"
+        }
+      ],
+      "overallScore": 3.5,
+      "status": "completed"
+    }
+  ]
+}

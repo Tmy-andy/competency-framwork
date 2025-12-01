@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+
+<html class="light" lang="vi">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Dashboard Tổng Quan</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#195de6",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#111621",
+                        "text-light": "#0e121b",
+                        "text-dark": "#ffffff",
+                        "card-light": "#ffffff",
+                        "card-dark": "#1a2233",
+                        "border-light": "#d0d7e7",
+                        "border-dark": "#34405a"
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+    <script src="competency-manager.js"></script>
+</head>
+
+<body class="bg-background-light dark:bg-background-dark font-display text-text-light dark:text-text-dark" data-page="index">
+    <!-- Sidebar will be loaded here -->
+    <div id="sidebar-container"></div>
+
+    <div class="ml-64 w-[calc(100%-256px)] h-screen overflow-y-auto">
+        <!-- Main Content -->
+        <main class="p-8">
+            <div class="mx-auto max-w-7xl">
+                <!-- PageHeading -->
+                <div class="flex flex-wrap items-center justify-between gap-4 mb-8">
+                    <div class="flex flex-col gap-1">
+                        <h1 class="text-text-light dark:text-text-dark text-3xl font-bold leading-tight tracking-tight">
+                            Dashboard Tổng Quan</h1>
+                        <p class="text-[#4e6797] dark:text-gray-400 text-base font-normal leading-normal">Thống kê tổng
+                            quan về năng lực nhân viên trong hệ thống</p>
+                    </div>
+                    <button onclick="window.location.href='danh-gia-nang-luc.html'"
+                        class="flex items-center gap-2 rounded-lg bg-primary px-4 py-2.5 text-sm font-semibold text-white shadow-sm transition-all hover:bg-primary/90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary">
+                        <span class="material-symbols-outlined">add_circle</span>
+                        Tạo đánh giá mới
+                    </button>
+                </div>
+                <!-- Stats -->
+                <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-2">
+                    <div
+                        class="flex min-w-[158px] flex-1 flex-col gap-2 rounded-xl bg-card-light dark:bg-card-dark p-6 border border-border-light dark:border-border-dark">
+                        <p class="text-text-light dark:text-text-dark text-base font-medium leading-normal">Tổng số nhân
+                            viên</p>
+                        <p class="text-text-light dark:text-text-dark tracking-light text-3xl font-bold leading-tight" id="totalEmployees">
+                            0</p>
+                        <div class="flex items-center text-[#36B37E]">
+                            <span class="material-symbols-outlined text-base">trending_up</span>
+                            <p class="text-sm font-medium leading-normal ml-1">Dữ liệu từ hệ thống</p>
+                        </div>
+                    </div>
+                    <div
+                        class="flex min-w-[158px] flex-1 flex-col gap-2 rounded-xl bg-card-light dark:bg-card-dark p-6 border border-border-light dark:border-border-dark">
+                        <p class="text-text-light dark:text-text-dark text-base font-medium leading-normal">Đánh giá đã
+                            hoàn thành</p>
+                        <p class="text-text-light dark:text-text-dark tracking-light text-3xl font-bold leading-tight">
+                            <span id="completedAssessments">0</span> / <span id="totalEmployees2">0</span></p>
+                        <div class="flex items-center text-[#36B37E]">
+                            <span class="material-symbols-outlined text-base">trending_up</span>
+                            <p class="text-sm font-medium leading-normal ml-1"><span id="completionRate">0</span>% hoàn thành</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Charts -->
+                <div class="mt-8 grid grid-cols-1 gap-6">
+                    <div
+                        class="flex min-w-72 flex-1 flex-col gap-4 rounded-xl border border-border-light dark:border-border-dark bg-card-light dark:bg-card-dark p-6">
+                        <div class="flex flex-col">
+                            <p class="text-text-light dark:text-text-dark text-lg font-semibold leading-normal">Phân bố
+                                mức độ năng lực</p>
+                            <p class="text-[#4e6797] dark:text-gray-400 text-sm font-normal">Dựa trên 125 đánh giá đã
+                                hoàn thành</p>
+                        </div>
+                        <div class="flex flex-col items-center justify-center gap-8 md:flex-row md:justify-around">
+                            <div class="relative flex items-center justify-center size-52">
+                                <svg class="size-full" viewBox="0 0 36 36">
+                                    <path class="stroke-[#36B37E] stroke-[4]"
+                                        d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
+                                        fill="none" stroke-dasharray="25, 100"></path> <!-- 25% HIGH -->
+                                    <path class="stroke-[#00B8D9] stroke-[4]"
+                                        d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
+                                        fill="none" stroke-dasharray="50, 100" stroke-dashoffset="-25"></path>
+                                    <!-- 50% MEDIUM -->
+                                    <path class="stroke-[#FFAB00] stroke-[4]"
+                                        d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
+                                        fill="none" stroke-dasharray="20, 100" stroke-dashoffset="-75"></path>
+                                    <!-- 20% LOW -->
+                                    <path class="stroke-[#DE350B] stroke-[4]"
+                                        d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
+                                        fill="none" stroke-dasharray="5, 100" stroke-dashoffset="-95"></path>
+                                    <!-- 5% CRITICAL -->
+                                </svg>
+                                <div class="absolute flex flex-col items-center">
+                                    <span class="text-3xl font-bold text-text-light dark:text-text-dark">125</span>
+                                    <span class="text-sm text-[#4e6797] dark:text-gray-400">Nhân viên</span>
+                                </div>
+                            </div>
+                            <div class="flex flex-col gap-4" id="chart-legend">
+                                <div class="flex items-center gap-3">
+                                    <div class="size-3 rounded-full bg-[#36B37E]"></div>
+                                    <div class="flex w-32 justify-between text-sm">
+                                        <span class="font-medium text-text-light dark:text-text-dark">High</span>
+                                        <span class="text-[#4e6797] dark:text-gray-400">25%</span>
+                                    </div>
+                                </div>
+                                <div class="flex items-center gap-3">
+                                    <div class="size-3 rounded-full bg-[#00B8D9]"></div>
+                                    <div class="flex w-32 justify-between text-sm">
+                                        <span class="font-medium text-text-light dark:text-text-dark">Medium</span>
+                                        <span class="text-[#4e6797] dark:text-gray-400">50%</span>
+                                    </div>
+                                </div>
+                                <div class="flex items-center gap-3">
+                                    <div class="size-3 rounded-full bg-[#FFAB00]"></div>
+                                    <div class="flex w-32 justify-between text-sm">
+                                        <span class="font-medium text-text-light dark:text-text-dark">Low</span>
+                                        <span class="text-[#4e6797] dark:text-gray-400">20%</span>
+                                    </div>
+                                </div>
+                                <div class="flex items-center gap-3">
+                                    <div class="size-3 rounded-full bg-[#DE350B]"></div>
+                                    <div class="flex w-32 justify-between text-sm">
+                                        <span class="font-medium text-text-light dark:text-text-dark">Critical</span>
+                                        <span class="text-[#4e6797] dark:text-gray-400">5%</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Quick Actions -->
+                <div class="mt-8">
+                    <h2
+                        class="text-text-light dark:text-text-dark text-lg font-semibold leading-tight tracking-tight mb-4">
+                        Lối tắt</h2>
+                    <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+                        <a class="flex items-center gap-4 rounded-xl border border-border-light dark:border-border-dark bg-card-light dark:bg-card-dark p-4 transition-shadow hover:shadow-lg"
+                            href="nhan-vien.html">
+                            <div class="flex size-12 items-center justify-center rounded-lg bg-primary/20 text-primary">
+                                <span class="material-symbols-outlined">group</span>
+                            </div>
+                            <div>
+                                <p class="font-semibold text-text-light dark:text-text-dark">Quản lý nhân viên</p>
+                                <p class="text-sm text-[#4e6797] dark:text-gray-400">Xem và chỉnh sửa danh sách</p>
+                            </div>
+                        </a>
+                        <a class="flex items-center gap-4 rounded-xl border border-border-light dark:border-border-dark bg-card-light dark:bg-card-dark p-4 transition-shadow hover:shadow-lg"
+                            href="danh-gia-nang-luc.html">
+                            <div class="flex size-12 items-center justify-center rounded-lg bg-primary/20 text-primary">
+                                <span class="material-symbols-outlined">add_circle</span>
+                            </div>
+                            <div>
+                                <p class="font-semibold text-text-light dark:text-text-dark">Tạo đánh giá mới</p>
+                                <p class="text-sm text-[#4e6797] dark:text-gray-400">Bắt đầu phiên đánh giá mới</p>
+                            </div>
+                        </a>
+                        <a class="flex items-center gap-4 rounded-xl border border-border-light dark:border-border-dark bg-card-light dark:bg-card-dark p-4 transition-shadow hover:shadow-lg"
+                            href="bao-cao.html">
+                            <div class="flex size-12 items-center justify-center rounded-lg bg-primary/20 text-primary">
+                                <span class="material-symbols-outlined">analytics</span>
+                            </div>
+                            <div>
+                                <p class="font-semibold text-text-light dark:text-text-dark">Xem báo cáo chi tiết</p>
+                                <p class="text-sm text-[#4e6797] dark:text-gray-400">Phân tích dữ liệu chuyên sâu</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script>
+        // Load sidebar from sidebar.html
+        fetch('sidebar.html')
+            .then(response => response.text())
+            .then(html => {
+                document.getElementById('sidebar-container').innerHTML = html;
+                
+                // Highlight active page AFTER sidebar is loaded
+                setTimeout(() => {
+                    const currentPage = document.body.getAttribute('data-page');
+                    const navLinks = document.querySelectorAll('.nav-link');
+                    
+                    navLinks.forEach(link => {
+                        link.classList.remove('bg-primary/10', 'text-primary', 'dark:text-white', 'dark:bg-primary/30', 'font-bold');
+                        if (link.getAttribute('data-page') === currentPage) {
+                            link.classList.add('bg-primary/10', 'text-primary', 'dark:text-white', 'dark:bg-primary/30', 'font-bold');
+                        }
+                    });
+                }, 50);
+            });
+
+        // Cập nhật dashboard khi dữ liệu sẵn sàng
+        window.addEventListener('competencyDataReady', () => {
+            // Delay để đảm bảo DOM đã sẵn sàng
+            setTimeout(() => {
+                const stats = competencyManager.getDashboardStats();
+                
+                console.log('📊 Updating dashboard with stats:', stats);
+                
+                document.getElementById('totalEmployees').textContent = stats.totalEmployees;
+                document.getElementById('totalEmployees2').textContent = stats.totalEmployees;
+                document.getElementById('completedAssessments').textContent = stats.completedAssessments;
+                document.getElementById('completionRate').textContent = stats.completionRate;
+                
+                // Cập nhật biểu đồ
+                const dist = stats.levelDistribution;
+                const total = dist[1] + dist[2] + dist[3] + dist[4] || 1;
+                const p1 = Math.round((dist[4] / total) * 100); // High
+                const p2 = Math.round((dist[3] / total) * 100); // Medium
+                const p3 = Math.round((dist[2] / total) * 100); // Low
+                const p4 = Math.round((dist[1] / total) * 100); // Critical
+                
+                console.log('📊 Chart percentages:', { p1, p2, p3, p4 });
+                
+                // Kiểm tra SVG tồn tại trước khi update
+                const svgPaths = document.querySelectorAll('svg path');
+                if (svgPaths.length >= 4) {
+                    svgPaths[0].setAttribute('stroke-dasharray', `${p1}, 100`);
+                    svgPaths[1].setAttribute('stroke-dasharray', `${p2}, 100`);
+                    svgPaths[1].setAttribute('stroke-dashoffset', `-${p1}`);
+                    svgPaths[2].setAttribute('stroke-dasharray', `${p3}, 100`);
+                    svgPaths[2].setAttribute('stroke-dashoffset', `-${p1 + p2}`);
+                    svgPaths[3].setAttribute('stroke-dasharray', `${p4}, 100`);
+                    svgPaths[3].setAttribute('stroke-dashoffset', `-${p1 + p2 + p3}`);
+                    console.log('✅ Chart SVG updated');
+                }
+                
+                // Update legend percentages - chỉ chọn trong phần legend của chart
+                const chartLegend = document.getElementById('chart-legend');
+                if (chartLegend) {
+                    const legendItems = chartLegend.querySelectorAll('.flex.items-center.gap-3');
+                    console.log('📊 Found legend items:', legendItems.length);
+                    
+                    if (legendItems.length >= 4) {
+                        // Mỗi legend item có structure: div.flex.items-center.gap-3 > div.flex.w-32 > span (2 spans)
+                        
+                        // High
+                        const highContainer = legendItems[0].querySelector('.flex.w-32');
+                        if (highContainer) {
+                            const spans = highContainer.querySelectorAll('span');
+                            if (spans.length >= 2) spans[1].textContent = p1 + '%';
+                        }
+                        
+                        // Medium
+                        const mediumContainer = legendItems[1].querySelector('.flex.w-32');
+                        if (mediumContainer) {
+                            const spans = mediumContainer.querySelectorAll('span');
+                            if (spans.length >= 2) spans[1].textContent = p2 + '%';
+                        }
+                        
+                        // Low
+                        const lowContainer = legendItems[2].querySelector('.flex.w-32');
+                        if (lowContainer) {
+                            const spans = lowContainer.querySelectorAll('span');
+                            if (spans.length >= 2) spans[1].textContent = p3 + '%';
+                        }
+                        
+                        // Critical
+                        const criticalContainer = legendItems[3].querySelector('.flex.w-32');
+                        if (criticalContainer) {
+                            const spans = criticalContainer.querySelectorAll('span');
+                            if (spans.length >= 2) spans[1].textContent = p4 + '%';
+                        }
+                        
+                        console.log('✅ Legend percentages updated');
+                    }
+                }
+            }, 100); // 100ms delay
+        });
+    </script>
+</body>
+
+</html>

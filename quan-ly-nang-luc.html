@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+
+<html class="light" lang="vi">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Quản Lý Năng Lực</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+        rel="stylesheet" />
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings:
+                'FILL' 0,
+                'wght' 400,
+                'GRAD' 0,
+                'opsz' 24
+        }
+    </style>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#195de6",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#111621",
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+    <script src="competency-manager.js"></script>
+    <script>
+        (function() {
+            var competencyManager;
+            var allCompetencies = [];
+            var filteredCompetencies = [];
+
+            // Initialize app when data is ready
+            window.addEventListener('competencyDataReady', async () => {
+                competencyManager = window.competencyManager;
+                allCompetencies = competencyManager.getCompetencies();
+                filteredCompetencies = [...allCompetencies];
+                renderCompetencies();
+            });
+
+        function renderCompetencies() {
+            const tbody = document.querySelector('tbody');
+            if (!tbody) return;
+
+            tbody.innerHTML = '';
+
+            filteredCompetencies.forEach((comp, index) => {
+                // Main row
+                const row = document.createElement('tr');
+                row.className = 'hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors';
+                row.innerHTML = `
+                    <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm text-gray-500">
+                        <button class="expand-btn" data-index="${index}">
+                            <span class="material-symbols-outlined chevron-icon text-gray-400 hover:text-gray-600">chevron_right</span>
+                        </button>
+                    </td>
+                    <td class="whitespace-nowrap px-4 py-4 text-sm font-medium text-gray-900 dark:text-white">${comp.name}</td>
+                    <td class="whitespace-nowrap px-4 py-4 text-sm text-gray-500 dark:text-gray-400">${comp.category || 'Năng lực chung'}</td>
+                    <td class="whitespace-nowrap px-4 py-4 text-sm text-gray-500 dark:text-gray-400 max-w-sm truncate">${comp.description || ''}</td>
+                    <td class="whitespace-nowrap py-4 pl-4 pr-4 text-sm font-medium sm:pr-6">
+                        <div class="flex items-center gap-4">
+                            <button class="edit-btn text-primary hover:text-primary/80" data-id="${comp.id}" title="Edit">
+                                <span class="material-symbols-outlined">edit</span>
+                            </button>
+                            <button class="delete-btn text-red-600 hover:text-red-500" data-id="${comp.id}" title="Delete">
+                                <span class="material-symbols-outlined">delete</span>
+                            </button>
+                        </div>
+                    </td>
+                `;
+                tbody.appendChild(row);
+
+                // Expand row with proficiency levels
+                const expandRow = document.createElement('tr');
+                expandRow.className = `expand-row hidden bg-background-light dark:bg-gray-900/50`;
+                expandRow.setAttribute('data-expand', index);
+                const levels = comp.proficiencyLevels || [];
+                const levelsHTML = levels.map((level, idx) => `
+                    <div class="flex flex-col gap-1">
+                        <p class="text-xs font-semibold text-gray-600 dark:text-gray-400">CẤP ĐỘ ${idx + 1} (${level.name.toUpperCase()})</p>
+                        <p class="text-sm text-gray-800 dark:text-gray-200">${level.description}</p>
+                    </div>
+                `).join('');
+
+                expandRow.innerHTML = `
+                    <td class="p-0" colspan="5">
+                        <div class="px-12 py-4">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4">
+                                ${levelsHTML}
+                            </div>
+                        </div>
+                    </td>
+                `;
+                tbody.appendChild(expandRow);
+            });
+
+            attachEventListeners();
+        }
+
+        function attachEventListeners() {
+            // Expand/collapse buttons
+            document.querySelectorAll('.expand-btn').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const index = btn.dataset.index;
+                    const expandRow = document.querySelector(`[data-expand="${index}"]`);
+                    const chevron = btn.querySelector('.chevron-icon');
+
+                    if (expandRow.classList.contains('hidden')) {
+                        expandRow.classList.remove('hidden');
+                        chevron.textContent = 'expand_more';
+                        chevron.parentElement.parentElement.style.color = 'var(--primary-color)';
+                    } else {
+                        expandRow.classList.add('hidden');
+                        chevron.textContent = 'chevron_right';
+                        chevron.parentElement.parentElement.style.color = 'var(--gray-400-color)';
+                    }
+                });
+            });
+
+            // Edit buttons
+            document.querySelectorAll('.edit-btn').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const compId = btn.dataset.id;
+                    const comp = allCompetencies.find(c => c.id === compId);
+                    if (comp) {
+                        showEditModal(comp);
+                    }
+                });
+            });
+
+            // Delete buttons
+            document.querySelectorAll('.delete-btn').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const compId = btn.dataset.id;
+                    const comp = allCompetencies.find(c => c.id === compId);
+                    if (comp && confirm(`Bạn có chắc chắn muốn xóa "${comp.name}" không?`)) {
+                        deleteCompetency(compId);
+                    }
+                });
+            });
+        }
+
+        function showEditModal(comp) {
+            const modal = document.createElement('div');
+            modal.className = 'fixed inset-0 z-50 flex items-center justify-center bg-black/50 dark:bg-black/70 p-4';
+            
+            const levelsHTML = (comp.proficiencyLevels || []).map((level, idx) => `
+                <div class="border border-gray-300 dark:border-gray-600 rounded-lg p-3 bg-gray-50 dark:bg-gray-800">
+                    <div class="flex items-center justify-between mb-2">
+                        <label class="block text-xs font-semibold text-gray-700 dark:text-gray-300">
+                            Cấp độ ${idx + 1}: <span class="text-primary">${level.name}</span>
+                        </label>
+                        <span class="text-xs px-2 py-1 rounded-full ${
+                            idx === 0 ? 'bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-300' :
+                            idx === 1 ? 'bg-yellow-100 dark:bg-yellow-900/30 text-yellow-700 dark:text-yellow-300' :
+                            idx === 2 ? 'bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300' :
+                            'bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300'
+                        }">
+                            ${level.name.toUpperCase()}
+                        </span>
+                    </div>
+                    <textarea 
+                        class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary/50 text-sm" 
+                        placeholder="Mô tả cấp độ..." 
+                        rows="2"
+                        data-level="${idx}">${level.description}</textarea>
+                </div>
+            `).join('');
+
+            modal.innerHTML = `
+                <div class="bg-white dark:bg-gray-900 rounded-lg shadow-xl max-w-4xl w-full h-[85vh] flex flex-col">
+                    <div class="p-6 border-b border-gray-200 dark:border-gray-800 flex items-center justify-between flex-shrink-0">
+                        <h2 class="text-xl font-bold text-gray-900 dark:text-white">Chỉnh Sửa Năng Lực</h2>
+                        <button onclick="this.closest('.fixed').remove()" class="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300">
+                            <span class="material-symbols-outlined">close</span>
+                        </button>
+                    </div>
+                    <form class="p-6 space-y-4 overflow-y-auto flex-1" onsubmit="handleEditCompetency(event, '${comp.id}')">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">Tên Năng Lực</label>
+                                <input type="text" class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary/50 focus:border-transparent text-sm" value="${comp.name}" data-field="name" required>
+                            </div>
+
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">Nhóm Năng Lực</label>
+                                <select class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary/50 focus:border-transparent text-sm" data-field="category" required>
+                                    <option value="General Competency" ${comp.category === 'General Competency' ? 'selected' : ''}>Năng lực chung</option>
+                                    <option value="Technical Competency" ${comp.category === 'Technical Competency' ? 'selected' : ''}>Năng lực kỹ thuật</option>
+                                    <option value="Leadership" ${comp.category === 'Leadership' ? 'selected' : ''}>Năng lực lãnh đạo</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">Mô Tả Chung</label>
+                            <textarea class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary/50 focus:border-transparent text-sm" placeholder="Mô tả tổng quát về năng lực..." rows="2" data-field="description" required>${comp.description}</textarea>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">Các Cấp Độ Năng Lực</label>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
+                                ${levelsHTML}
+                            </div>
+                        </div>
+                    </form>
+                    <div class="p-6 border-t border-gray-200 dark:border-gray-700 flex gap-3 flex-shrink-0">
+                        <button type="button" onclick="this.closest('.fixed').remove()" class="flex-1 px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800 font-medium text-sm">Hủy</button>
+                        <button type="submit" onclick="this.closest('.fixed').querySelector('form').dispatchEvent(new Event('submit'))" class="flex-1 px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary/90 font-medium flex items-center justify-center gap-2 text-sm">
+                            <span class="material-symbols-outlined">save</span>
+                            <span>Lưu Thay Đổi</span>
+                        </button>
+                    </div>
+                </div>
+            `;
+            document.body.appendChild(modal);
+            
+            // Close modal when clicking outside
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    modal.remove();
+                }
+            });
+        }
+
+        function deleteCompetency(compId) {
+            const index = allCompetencies.findIndex(c => c.id === compId);
+            if (index > -1) {
+                allCompetencies.splice(index, 1);
+                filteredCompetencies = filteredCompetencies.filter(c => c.id !== compId);
+                renderCompetencies();
+                alert('Năng lực đã được xóa thành công!');
+            }
+        }
+
+        function filterCompetencies() {
+            const searchInput = document.querySelector('input[placeholder*="Tìm kiếm"]');
+            const query = searchInput ? searchInput.value.toLowerCase() : '';
+            
+            filteredCompetencies = allCompetencies.filter(comp => 
+                comp.name.toLowerCase().includes(query) ||
+                (comp.category && comp.category.toLowerCase().includes(query))
+            );
+            renderCompetencies();
+        }
+
+        function showAddCompetencyModal() {
+            const levelNames = ['Critical', 'Low', 'Medium', 'High'];
+            const levelColors = [
+                'bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-300',
+                'bg-yellow-100 dark:bg-yellow-900/30 text-yellow-700 dark:text-yellow-300',
+                'bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300',
+                'bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300'
+            ];
+
+            const levelsHTML = levelNames.map((name, idx) => `
+                <div class="border border-gray-300 dark:border-gray-600 rounded-lg p-3 bg-gray-50 dark:bg-gray-800">
+                    <div class="flex items-center justify-between mb-2">
+                        <label class="block text-xs font-semibold text-gray-700 dark:text-gray-300">
+                            Cấp độ ${idx + 1}: <span class="text-primary">${name}</span>
+                        </label>
+                        <span class="text-xs px-2 py-1 rounded-full ${levelColors[idx]}">
+                            ${name.toUpperCase()}
+                        </span>
+                    </div>
+                    <textarea 
+                        class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary/50 focus:border-transparent text-sm" 
+                        placeholder="Mô tả chi tiết cấp độ ${name}..." 
+                        rows="2"
+                        data-level="${idx}"
+                        required></textarea>
+                </div>
+            `).join('');
+
+            const modal = document.createElement('div');
+            modal.className = 'fixed inset-0 z-50 flex items-center justify-center bg-black/50 dark:bg-black/70 p-4';
+            modal.innerHTML = `
+                <div class="bg-white dark:bg-gray-900 rounded-lg shadow-xl max-w-4xl w-full h-[85vh] flex flex-col">
+                    <div class="p-6 border-b border-gray-200 dark:border-gray-800 flex items-center justify-between flex-shrink-0">
+                        <h2 class="text-xl font-bold text-gray-900 dark:text-white">Thêm Năng Lực Mới</h2>
+                        <button onclick="this.closest('.fixed').remove()" class="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300">
+                            <span class="material-symbols-outlined">close</span>
+                        </button>
+                    </div>
+                    <form class="p-6 space-y-4 overflow-y-auto flex-1" onsubmit="handleAddCompetency(event)">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">Tên Năng Lực <span class="text-red-500">*</span></label>
+                                <input type="text" class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary/50 focus:border-transparent text-sm" placeholder="VD: Giao tiếp hiệu quả" data-field="name" required>
+                            </div>
+
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">Nhóm Năng Lực <span class="text-red-500">*</span></label>
+                                <select class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary/50 focus:border-transparent text-sm" data-field="category" required>
+                                    <option value="">-- Chọn nhóm --</option>
+                                    <option value="General Competency">Năng lực chung</option>
+                                    <option value="Technical Competency">Năng lực kỹ thuật</option>
+                                    <option value="Leadership">Năng lực lãnh đạo</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">Mô Tả Chung <span class="text-red-500">*</span></label>
+                            <textarea class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary/50 focus:border-transparent text-sm" placeholder="Mô tả tổng quát về năng lực này..." rows="2" data-field="description" required></textarea>
+                            <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">Mô tả tổng quan về năng lực và ứng dụng của nó</p>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">Các Cấp Độ Năng Lực <span class="text-red-500">*</span></label>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
+                                ${levelsHTML}
+                            </div>
+                            <p class="text-xs text-gray-500 dark:text-gray-400 mt-2">Nhập mô tả chi tiết cho từng cấp độ (Critical, Low, Medium, High)</p>
+                        </div>
+                    </form>
+                    <div class="p-6 border-t border-gray-200 dark:border-gray-700 flex gap-3 flex-shrink-0">
+                        <button type="button" onclick="this.closest('.fixed').remove()" class="flex-1 px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800 font-medium text-sm transition-colors">Hủy</button>
+                        <button type="submit" onclick="this.closest('.fixed').querySelector('form').dispatchEvent(new Event('submit'))" class="flex-1 px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary/90 font-medium flex items-center justify-center gap-2 text-sm transition-colors">
+                            <span class="material-symbols-outlined">add_circle</span>
+                            <span>Thêm Năng Lực</span>
+                        </button>
+                    </div>
+                </div>
+            `;
+            document.body.appendChild(modal);
+            
+            // Close modal when clicking outside
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    modal.remove();
+                }
+            });
+        }
+
+        function handleAddCompetency(event) {
+            event.preventDefault();
+            const form = event.target;
+            
+            const name = form.querySelector('[data-field="name"]').value.trim();
+            const category = form.querySelector('[data-field="category"]').value.trim();
+            const description = form.querySelector('[data-field="description"]').value.trim();
+            
+            if (!name || !category || !description) {
+                alert('Vui lòng điền đầy đủ thông tin!');
+                return;
+            }
+
+            // Collect proficiency levels
+            const proficiencyLevels = [];
+            const levelNames = ['Critical', 'Low', 'Medium', 'High'];
+            form.querySelectorAll('[data-level]').forEach((textarea, idx) => {
+                const description = textarea.value.trim();
+                if (!description) {
+                    alert(`Vui lòng điền mô tả cho cấp độ ${idx + 1} (${levelNames[idx]})`);
+                    throw new Error('Missing level description');
+                }
+                proficiencyLevels.push({
+                    name: levelNames[idx],
+                    description: description
+                });
+            });
+
+            // Create new competency
+            const newId = `comp_${Date.now()}`;
+            const newCompetency = {
+                id: newId,
+                name: name,
+                category: category,
+                description: description,
+                proficiencyLevels: proficiencyLevels
+            };
+
+            allCompetencies.push(newCompetency);
+            filteredCompetencies = [...allCompetencies];
+            
+            // Save to localStorage
+            competencyManager.addCompetency(newCompetency);
+            
+            renderCompetencies();
+            form.closest('.fixed').remove();
+            
+            // Show success message
+            const successMsg = document.createElement('div');
+            successMsg.className = 'fixed bottom-6 right-6 bg-green-600 text-white px-6 py-3 rounded-lg shadow-lg flex items-center gap-2 animate-pulse';
+            successMsg.innerHTML = `
+                <span class="material-symbols-outlined">check_circle</span>
+                <span>Đã thêm năng lực "${name}" thành công!</span>
+            `;
+            document.body.appendChild(successMsg);
+            setTimeout(() => successMsg.remove(), 3000);
+        }
+
+        function handleEditCompetency(event, compId) {
+            event.preventDefault();
+            const form = event.target;
+            
+            const name = form.querySelector('[data-field="name"]').value.trim();
+            const category = form.querySelector('[data-field="category"]').value.trim();
+            const description = form.querySelector('[data-field="description"]').value.trim();
+            
+            if (!name || !category || !description) {
+                alert('Vui lòng điền đầy đủ thông tin!');
+                return;
+            }
+
+            // Collect proficiency levels
+            const proficiencyLevels = [];
+            const levelNames = ['Critical', 'Low', 'Medium', 'High'];
+            form.querySelectorAll('[data-level]').forEach((textarea, idx) => {
+                const description = textarea.value.trim();
+                if (!description) {
+                    alert(`Vui lòng điền mô tả cho cấp độ ${idx + 1} (${levelNames[idx]})`);
+                    throw new Error('Missing level description');
+                }
+                proficiencyLevels.push({
+                    name: levelNames[idx],
+                    description: description
+                });
+            });
+
+            // Update competency
+            const compIndex = allCompetencies.findIndex(c => c.id === compId);
+            if (compIndex > -1) {
+                allCompetencies[compIndex] = {
+                    id: compId,
+                    name: name,
+                    category: category,
+                    description: description,
+                    proficiencyLevels: proficiencyLevels
+                };
+                filteredCompetencies = [...allCompetencies];
+                renderCompetencies();
+                form.closest('.fixed').remove();
+                
+                // Show success message
+                const successMsg = document.createElement('div');
+                successMsg.className = 'fixed bottom-6 right-6 bg-green-600 text-white px-6 py-3 rounded-lg shadow-lg flex items-center gap-2 animate-pulse';
+                successMsg.innerHTML = `
+                    <span class="material-symbols-outlined">check_circle</span>
+                    <span>Đã cập nhật năng lực "${name}" thành công!</span>
+                `;
+                document.body.appendChild(successMsg);
+                setTimeout(() => successMsg.remove(), 3000);
+            }
+        }
+
+        // Add Competency button - FIXED
+        document.addEventListener('DOMContentLoaded', () => {
+            const searchInput = document.querySelector('input[placeholder*="Tìm kiếm"]');
+            if (searchInput) {
+                searchInput.addEventListener('input', filterCompetencies);
+            }
+
+            // Add Competency button - Find button by looking for "Thêm Năng Lực Mới" text
+            const buttons = document.querySelectorAll('button');
+            let addBtn = null;
+            for (let btn of buttons) {
+                if (btn.textContent.includes('Thêm Năng Lực Mới')) {
+                    addBtn = btn;
+                    break;
+                }
+            }
+            
+            if (addBtn) {
+                addBtn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    showAddCompetencyModal();
+                });
+            }
+        });
+        
+        // Export functions to window scope for HTML event handlers
+        window.showAddCompetencyModal = showAddCompetencyModal;
+        window.handleAddCompetency = handleAddCompetency;
+        window.renderCompetencies = renderCompetencies;
+        window.filterCompetencies = filterCompetencies;
+        
+        })();
+    </script>
+</head>
+
+<body class="font-display bg-background-light dark:bg-background-dark" data-page="quan-ly-nang-luc">
+    <!-- Sidebar will be loaded here -->
+    <div id="sidebar-container"></div>
+
+    <div class="ml-64 w-[calc(100%-256px)] h-screen overflow-y-auto">
+        <!-- Main Content -->
+        <main class="p-6 lg:p-8">
+                <div class="mx-auto max-w-7xl">
+                    <!-- PageHeading -->
+                    <div class="flex flex-wrap items-center justify-between gap-4">
+                        <div class="flex min-w-72 flex-col gap-2">
+                            <p class="text-gray-900 dark:text-white text-3xl font-bold leading-tight">Quản Lý Năng Lực
+                            </p>
+                            <p class="text-gray-500 dark:text-gray-400 text-base font-normal leading-normal">Thêm, sửa,
+                                xóa và quản lý các năng lực và cấp độ mô tả của nhân viên.</p>
+                        </div>
+                        <button
+                            class="flex items-center justify-center gap-2 overflow-hidden rounded-lg h-10 px-4 bg-primary text-white text-sm font-medium leading-normal shadow-sm hover:bg-primary/90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary">
+                            <span class="material-symbols-outlined">add_circle</span>
+                            <span class="truncate">Thêm Năng Lực Mới</span>
+                        </button>
+                    </div>
+                    <!-- Toolbar & Search -->
+                    <div
+                        class="mt-6 flex flex-wrap items-center justify-between gap-4 rounded-xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-background-dark p-4">
+                        <div class="flex-1 min-w-[300px]">
+                            <label class="flex flex-col min-w-40 h-11 w-full">
+                                <div class="flex w-full flex-1 items-stretch rounded-lg h-full">
+                                    <div
+                                        class="text-gray-500 dark:text-gray-400 flex border-none bg-background-light dark:bg-gray-800 items-center justify-center pl-4 rounded-l-lg border-r-0">
+                                        <span class="material-symbols-outlined">search</span>
+                                    </div>
+                                    <input
+                                        class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-r-lg text-gray-900 dark:text-white focus:outline-0 focus:ring-2 focus:ring-inset focus:ring-primary border-none bg-background-light dark:bg-gray-800 h-full placeholder:text-gray-500 dark:placeholder:text-gray-400 px-4 pl-2 text-sm font-normal leading-normal"
+                                        placeholder="Tìm kiếm theo tên năng lực..." value="" />
+                                </div>
+                            </label>
+                        </div>
+                        <div class="flex gap-2">
+                            <button
+                                class="flex items-center justify-center gap-2 h-11 px-4 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 text-sm font-medium">
+                                <span class="material-symbols-outlined">filter_list</span>
+                                <span>Lọc</span>
+                            </button>
+                            <button
+                                class="flex items-center justify-center gap-2 h-11 px-4 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 text-sm font-medium">
+                                <span class="material-symbols-outlined">download</span>
+                                <span>Xuất file</span>
+                            </button>
+                        </div>
+                    </div>
+                    <!-- Table -->
+                    <div class="mt-6 flow-root">
+                        <div class="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+                            <div class="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
+                                <div class="overflow-hidden rounded-xl border border-gray-200 dark:border-gray-800">
+                                    <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-800">
+                                        <thead class="bg-gray-50 dark:bg-gray-800">
+                                            <tr>
+                                                <th class="w-12" scope="col"></th>
+                                                <th class="px-4 py-3.5 text-left text-sm font-semibold text-gray-900 dark:text-white"
+                                                    scope="col">Tên Năng Lực</th>
+                                                <th class="px-4 py-3.5 text-left text-sm font-semibold text-gray-900 dark:text-white"
+                                                    scope="col">Nhóm Năng Lực</th>
+                                                <th class="px-4 py-3.5 text-left text-sm font-semibold text-gray-900 dark:text-white"
+                                                    scope="col">Mô Tả Ngắn</th>
+                                                <th class="relative py-3.5 pl-4 pr-4 sm:pr-6 text-left text-sm font-semibold text-gray-900 dark:text-white"
+                                                    scope="col">Hành Động</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody
+                                            class="divide-y divide-gray-200 dark:divide-gray-700 bg-white dark:bg-background-dark">
+                                            <!-- Competencies will be rendered here by JavaScript -->
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script>
+        // Load sidebar from sidebar.html
+        fetch('sidebar.html')
+            .then(response => response.text())
+            .then(html => {
+                document.getElementById('sidebar-container').innerHTML = html;
+                
+                // Highlight active page AFTER sidebar is loaded
+                setTimeout(() => {
+                    const currentPage = document.body.getAttribute('data-page');
+                    const navLinks = document.querySelectorAll('.nav-link');
+                    
+                    navLinks.forEach(link => {
+                        link.classList.remove('bg-primary/10', 'text-primary', 'dark:text-white', 'dark:bg-primary/30', 'font-bold');
+                        if (link.getAttribute('data-page') === currentPage) {
+                            link.classList.add('bg-primary/10', 'text-primary', 'dark:text-white', 'dark:bg-primary/30', 'font-bold');
+                        }
+                    });
+                }, 50);
+            });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+
+<html class="light" lang="vi">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Trang Báo Cáo &amp; Phân Tích</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#195de6",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#111621",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+
+        .material-symbols-outlined.fill {
+            font-variation-settings: 'FILL' 1;
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="competency-manager.js"></script>
+</head>
+
+<body class="font-display bg-background-light dark:bg-background-dark" data-page="bao-cao">
+    <!-- Sidebar will be loaded here -->
+    <div id="sidebar-container"></div>
+
+    <div class="ml-64 w-[calc(100%-256px)] h-screen overflow-y-auto">
+        <!-- Main Content -->
+        <main class="p-6 lg:p-8">
+            <div class="w-full max-w-7xl mx-auto">
+                <!-- PageHeading & Actions -->
+                <div class="flex flex-wrap justify-between items-start gap-4 mb-8">
+                    <div class="flex min-w-72 flex-col gap-2">
+                        <h1 class="text-gray-900 dark:text-gray-50 text-3xl font-bold leading-tight tracking-tight">
+                            Báo Cáo &amp; Phân Tích</h1>
+                        <p class="text-gray-500 dark:text-gray-400 text-base font-normal leading-normal">Xem và phân
+                            tích dữ liệu đánh giá năng lực nhân viên.</p>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <button
+                            class="flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-white dark:bg-gray-800 dark:hover:bg-gray-700 border border-gray-300 dark:border-gray-700 px-4 text-gray-800 dark:text-gray-200 hover:bg-gray-50">
+                            <span class="material-symbols-outlined text-lg">download</span>
+                            <p class="text-sm font-medium leading-normal">Xuất báo cáo</p>
+                            <span class="material-symbols-outlined text-lg">expand_more</span>
+                        </button>
+                    </div>
+                </div>
+                <!-- Filters -->
+                <div
+                        class="bg-white dark:bg-gray-900 rounded-xl p-4 border border-gray-200 dark:border-gray-800 mb-6">
+                        <h3
+                            class="text-gray-900 dark:text-gray-100 text-base font-semibold leading-tight tracking-tight pb-3">
+                            Bộ lọc báo cáo</h3>
+                        <div class="flex flex-wrap items-center gap-3">
+                            <button
+                                class="flex h-9 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-gray-100 dark:bg-gray-800 pl-3 pr-2 text-gray-800 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-700">
+                                <span class="material-symbols-outlined text-base">date_range</span>
+                                <p class="text-sm font-medium leading-normal">Khoảng thời gian</p>
+                                <span class="material-symbols-outlined text-base">expand_more</span>
+                            </button>
+                            <button
+                                class="flex h-9 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-gray-100 dark:bg-gray-800 pl-3 pr-2 text-gray-800 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-700">
+                                <span class="material-symbols-outlined text-base">store</span>
+                                <p class="text-sm font-medium leading-normal">Cửa hàng</p>
+                                <span class="material-symbols-outlined text-base">expand_more</span>
+                            </button>
+                            <button
+                                class="flex h-9 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-gray-100 dark:bg-gray-800 pl-3 pr-2 text-gray-800 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-700">
+                                <span class="material-symbols-outlined text-base">badge</span>
+                                <p class="text-sm font-medium leading-normal">Vị trí</p>
+                                <span class="material-symbols-outlined text-base">expand_more</span>
+                            </button>
+                            <button
+                                class="ml-auto flex h-9 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-primary px-4 text-white hover:bg-primary/90">
+                                <p class="text-sm font-medium leading-normal">Áp dụng</p>
+                            </button>
+                        </div>
+                    </div>
+                    <!-- Stats -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-6">
+                        <div
+                            class="flex flex-col gap-2 rounded-xl p-6 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800">
+                            <p class="text-gray-600 dark:text-gray-400 text-sm font-medium leading-normal">Tổng nhân
+                                viên</p>
+                            <p class="text-gray-900 dark:text-gray-50 tracking-tight text-3xl font-bold leading-tight">
+                                1,240</p>
+                        </div>
+                        <div
+                            class="flex flex-col gap-2 rounded-xl p-6 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800">
+                            <p class="text-gray-600 dark:text-gray-400 text-sm font-medium leading-normal">Nhân viên đã
+                                đánh giá</p>
+                            <p class="text-gray-900 dark:text-gray-50 tracking-tight text-3xl font-bold leading-tight">
+                                985 <span class="text-lg text-gray-500 dark:text-gray-400 font-medium">(79%)</span></p>
+                        </div>
+                        <div
+                            class="flex flex-col gap-2 rounded-xl p-6 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800">
+                            <p class="text-gray-600 dark:text-gray-400 text-sm font-medium leading-normal">Năng lực phổ
+                                biến nhất</p>
+                            <p class="text-gray-900 dark:text-gray-50 tracking-tight text-3xl font-bold leading-tight">
+                                Tư vấn sản phẩm</p>
+                        </div>
+                    </div>
+                    <!-- Charts -->
+                    <div class="grid grid-cols-1 lg:grid-cols-5 gap-6 mb-6">
+                        <!-- Bar Chart -->
+                        <div
+                            class="lg:col-span-3 bg-white dark:bg-gray-900 rounded-xl p-6 border border-gray-200 dark:border-gray-800">
+                            <h3
+                                class="text-gray-900 dark:text-gray-100 text-lg font-semibold leading-tight tracking-tight mb-4">
+                                Phân bố Năng lực theo Cấp độ</h3>
+                            <div class="h-80 relative">
+                                <canvas id="barChart"></canvas>
+                            </div>
+                        </div>
+                        <!-- Pie Chart -->
+                        <div
+                            class="lg:col-span-2 bg-white dark:bg-gray-900 rounded-xl p-6 border border-gray-200 dark:border-gray-800">
+                            <h3
+                                class="text-gray-900 dark:text-gray-100 text-lg font-semibold leading-tight tracking-tight mb-4">
+                                Tỷ lệ phân loại nhân viên</h3>
+                            <div class="h-80 relative">
+                                <canvas id="pieChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Data Table -->
+                    <div
+                        class="bg-white dark:bg-gray-900 rounded-xl border border-gray-200 dark:border-gray-800 overflow-hidden">
+                        <div class="p-6">
+                            <h3
+                                class="text-gray-900 dark:text-gray-100 text-lg font-semibold leading-tight tracking-tight">
+                                Danh sách chi tiết nhân viên</h3>
+                        </div>
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                                <thead
+                                    class="text-xs text-gray-700 dark:text-gray-300 uppercase bg-gray-50 dark:bg-gray-800">
+                                    <tr>
+                                        <th class="px-6 py-3" scope="col">Mã NV</th>
+                                        <th class="px-6 py-3" scope="col">Họ tên</th>
+                                        <th class="px-6 py-3" scope="col">Chức danh</th>
+                                        <th class="px-6 py-3" scope="col">Cửa hàng/Phòng ban</th>
+                                        <th class="px-6 py-3" scope="col">Mức phân loại</th>
+                                        <th class="px-6 py-3" scope="col">Ngày đánh giá</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr
+                                        class="bg-white dark:bg-gray-900 border-b dark:border-gray-800 hover:bg-gray-50 dark:hover:bg-gray-800/50">
+                                        <td
+                                            class="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap">
+                                            NV001</td>
+                                        <td class="px-6 py-4">Nguyễn Văn A</td>
+                                        <td class="px-6 py-4">Nhân viên bán hàng</td>
+                                        <td class="px-6 py-4">Cửa hàng Quận 1</td>
+                                        <td class="px-6 py-4"><span
+                                                class="bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-300 text-xs font-medium me-2 px-2.5 py-0.5 rounded-full">Giỏi</span>
+                                        </td>
+                                        <td class="px-6 py-4">2023-10-25</td>
+                                    </tr>
+                                    <tr
+                                        class="bg-white dark:bg-gray-900 border-b dark:border-gray-800 hover:bg-gray-50 dark:hover:bg-gray-800/50">
+                                        <td
+                                            class="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap">
+                                            NV002</td>
+                                        <td class="px-6 py-4">Trần Thị B</td>
+                                        <td class="px-6 py-4">Tư vấn viên</td>
+                                        <td class="px-6 py-4">Cửa hàng Quận 3</td>
+                                        <td class="px-6 py-4"><span
+                                                class="bg-sky-100 text-sky-800 dark:bg-sky-900 dark:text-sky-300 text-xs font-medium me-2 px-2.5 py-0.5 rounded-full">Khá</span>
+                                        </td>
+                                        <td class="px-6 py-4">2023-10-24</td>
+                                    </tr>
+                                    <tr
+                                        class="bg-white dark:bg-gray-900 border-b dark:border-gray-800 hover:bg-gray-50 dark:hover:bg-gray-800/50">
+                                        <td
+                                            class="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap">
+                                            NV003</td>
+                                        <td class="px-6 py-4">Lê Văn C</td>
+                                        <td class="px-6 py-4">Quản lý kho</td>
+                                        <td class="px-6 py-4">Kho trung tâm</td>
+                                        <td class="px-6 py-4"><span
+                                                class="bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-300 text-xs font-medium me-2 px-2.5 py-0.5 rounded-full">Giỏi</span>
+                                        </td>
+                                        <td class="px-6 py-4">2023-10-26</td>
+                                    </tr>
+                                    <tr
+                                        class="bg-white dark:bg-gray-900 border-b dark:border-gray-800 hover:bg-gray-50 dark:hover:bg-gray-800/50">
+                                        <td
+                                            class="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap">
+                                            NV004</td>
+                                        <td class="px-6 py-4">Phạm Thị D</td>
+                                        <td class="px-6 py-4">Nhân viên bán hàng</td>
+                                        <td class="px-6 py-4">Cửa hàng Quận 1</td>
+                                        <td class="px-6 py-4"><span
+                                                class="bg-amber-100 text-amber-800 dark:bg-amber-900 dark:text-amber-300 text-xs font-medium me-2 px-2.5 py-0.5 rounded-full">Trung
+                                                bình</span></td>
+                                        <td class="px-6 py-4">2023-10-25</td>
+                                    </tr>
+                                    <tr class="bg-white dark:bg-gray-900 hover:bg-gray-50 dark:hover:bg-gray-800/50">
+                                        <td
+                                            class="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap">
+                                            NV005</td>
+                                        <td class="px-6 py-4">Võ Văn E</td>
+                                        <td class="px-6 py-4">Thu ngân</td>
+                                        <td class="px-6 py-4">Cửa hàng Quận 5</td>
+                                        <td class="px-6 py-4"><span
+                                                class="bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-300 text-xs font-medium me-2 px-2.5 py-0.5 rounded-full">Yếu</span>
+                                        </td>
+                                        <td class="px-6 py-4">2023-10-22</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- Pagination -->
+                        <nav aria-label="Table navigation" class="flex items-center justify-between p-4">
+                            <span class="text-sm font-normal text-gray-500 dark:text-gray-400">Showing <span
+                                    class="font-semibold text-gray-900 dark:text-white">1-5</span> of <span
+                                    class="font-semibold text-gray-900 dark:text-white">100</span></span>
+                            <ul class="inline-flex -space-x-px text-sm h-8">
+                                <li><a class="flex items-center justify-center px-3 h-8 ms-0 leading-tight text-gray-500 bg-white border border-gray-300 rounded-s-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+                                        href="#">Previous</a></li>
+                                <li><a class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+                                        href="#">1</a></li>
+                                <li><a class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+                                        href="#">2</a></li>
+                                <li><a class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 rounded-e-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+                                        href="#">Next</a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </main>
+    </div>
+
+    <script>
+        // Load sidebar from sidebar.html
+        fetch('sidebar.html')
+            .then(response => response.text())
+            .then(html => {
+                document.getElementById('sidebar-container').innerHTML = html;
+                
+                // Highlight active page AFTER sidebar is loaded
+                setTimeout(() => {
+                    const currentPage = document.body.getAttribute('data-page');
+                    const navLinks = document.querySelectorAll('.nav-link');
+                    
+                    navLinks.forEach(link => {
+                        link.classList.remove('bg-primary/10', 'text-primary', 'dark:text-white', 'dark:bg-primary/30', 'font-bold');
+                        if (link.getAttribute('data-page') === currentPage) {
+                            link.classList.add('bg-primary/10', 'text-primary', 'dark:text-white', 'dark:bg-primary/30', 'font-bold');
+                        }
+                    });
+                }, 50);
+            });
+
+        // Initialize charts
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeCharts();
+        });
+
+        function initializeCharts() {
+            // Bar Chart - Phân bố Năng lực theo Cấp độ
+            const barCtx = document.getElementById('barChart');
+            if (barCtx) {
+                new Chart(barCtx, {
+                    type: 'bar',
+                    data: {
+                        labels: ['Giao tiếp', 'Dịch vụ KH', 'Bán hàng', 'Làm việc nhóm', 'Hiểu sản phẩm', 'Quản lý thời gian'],
+                        datasets: [
+                            {
+                                label: 'Cấp độ 1 (Critical)',
+                                data: [25, 30, 20, 15, 35, 25],
+                                backgroundColor: '#DE350B',
+                                borderColor: '#DE350B',
+                                borderWidth: 0
+                            },
+                            {
+                                label: 'Cấp độ 2 (Low)',
+                                data: [40, 35, 45, 30, 25, 35],
+                                backgroundColor: '#FFAB00',
+                                borderColor: '#FFAB00',
+                                borderWidth: 0
+                            },
+                            {
+                                label: 'Cấp độ 3 (Medium)',
+                                data: [50, 55, 50, 60, 55, 50],
+                                backgroundColor: '#00B8D9',
+                                borderColor: '#00B8D9',
+                                borderWidth: 0
+                            },
+                            {
+                                label: 'Cấp độ 4 (High)',
+                                data: [65, 60, 70, 75, 60, 65],
+                                backgroundColor: '#36B37E',
+                                borderColor: '#36B37E',
+                                borderWidth: 0
+                            }
+                        ]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: {
+                                position: 'top',
+                                labels: {
+                                    color: document.documentElement.classList.contains('dark') ? '#d1d5db' : '#374151',
+                                    font: {
+                                        size: 12
+                                    }
+                                }
+                            }
+                        },
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                                max: 100,
+                                ticks: {
+                                    color: document.documentElement.classList.contains('dark') ? '#9ca3af' : '#6b7280'
+                                },
+                                grid: {
+                                    color: document.documentElement.classList.contains('dark') ? '#374151' : '#e5e7eb'
+                                }
+                            },
+                            x: {
+                                ticks: {
+                                    color: document.documentElement.classList.contains('dark') ? '#9ca3af' : '#6b7280'
+                                },
+                                grid: {
+                                    display: false
+                                }
+                            }
+                        }
+                    }
+                });
+            }
+
+            // Pie Chart - Tỷ lệ phân loại nhân viên
+            const pieCtx = document.getElementById('pieChart');
+            if (pieCtx) {
+                new Chart(pieCtx, {
+                    type: 'doughnut',
+                    data: {
+                        labels: ['Xuất sắc (High)', 'Tốt (Medium)', 'Cơ bản (Low)', 'Cần cải thiện (Critical)'],
+                        datasets: [{
+                            data: [35, 40, 18, 7],
+                            backgroundColor: [
+                                '#36B37E',
+                                '#00B8D9',
+                                '#FFAB00',
+                                '#DE350B'
+                            ],
+                            borderColor: [
+                                '#36B37E',
+                                '#00B8D9',
+                                '#FFAB00',
+                                '#DE350B'
+                            ],
+                            borderWidth: 2
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: {
+                                position: 'bottom',
+                                labels: {
+                                    color: document.documentElement.classList.contains('dark') ? '#d1d5db' : '#374151',
+                                    font: {
+                                        size: 12
+                                    },
+                                    padding: 15
+                                }
+                            }
+                        }
+                    }
+                });
+            }
+        }
+    </script>
+        </main>
+    </div>
+</body>
+
+</html>
