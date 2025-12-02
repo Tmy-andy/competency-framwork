@@ -14,10 +14,26 @@
 
     async function loadData() {
         try {
-            const response = await fetch('data.json');
-            const data = await response.json();
-            employees = data.employees || [];
-            competencies = data.competencies || [];
+            // Load Barista competencies
+            const compResponse = await fetch('competencies-barista.json');
+            const baristaComps = await compResponse.json();
+            
+            // Transform to expected format
+            competencies = baristaComps.map(comp => ({
+                id: comp.id,
+                name: comp.name || comp.nameVi,
+                description: comp.definition,
+                category: comp.category
+            }));
+            
+            // Load employees (mock data for now)
+            employees = [
+                { id: 'NV001', name: 'Nguyễn Văn A', position: 'Barista' },
+                { id: 'NV002', name: 'Trần Thị B', position: 'Barista' },
+                { id: 'NV003', name: 'Lê Văn C', position: 'Senior Barista' }
+            ];
+            
+            console.log(`✅ Loaded ${competencies.length} Barista competencies`);
             
             // Populate employee dropdown
             populateEmployeeDropdown();
@@ -133,32 +149,50 @@
             return;
         }
 
-        // Hiển thị TẤT CẢ competencies (38 items)
-        formSection.innerHTML = competencies.map(comp => `
-            <div class="flex flex-col gap-4 p-6 bg-white dark:bg-background-dark rounded-xl border border-gray-200 dark:border-gray-700">
-                <div>
-                    <h3 class="text-lg font-bold text-gray-900 dark:text-white">${comp.name}</h3>
-                    <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">${comp.description}</p>
-                </div>
-                <div class="flex gap-3 flex-wrap">
-                    <button type="button" class="level-btn px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 hover:border-primary" data-level="1" data-comp="${comp.id}">
-                        <span class="text-sm font-medium">1</span>
-                    </button>
-                    <button type="button" class="level-btn px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 hover:border-primary" data-level="2" data-comp="${comp.id}">
-                        <span class="text-sm font-medium">2</span>
-                    </button>
-                    <button type="button" class="level-btn px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 hover:border-primary" data-level="3" data-comp="${comp.id}">
-                        <span class="text-sm font-medium">3</span>
-                    </button>
-                    <button type="button" class="level-btn px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 hover:border-primary" data-level="4" data-comp="${comp.id}">
-                        <span class="text-sm font-medium">4</span>
-                    </button>
-                </div>
-                <textarea placeholder="Nhận xét (tùy chọn)" class="comment-input w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-primary/50" data-comp="${comp.id}" rows="2"></textarea>
+        // Group competencies by category
+        const groupedCompetencies = {};
+        competencies.forEach(comp => {
+            const category = comp.category || 'Khác';
+            if (!groupedCompetencies[category]) {
+                groupedCompetencies[category] = [];
+            }
+            groupedCompetencies[category].push(comp);
+        });
+
+        // Render competencies grouped by category
+        formSection.innerHTML = Object.entries(groupedCompetencies).map(([category, comps]) => `
+            <div class="flex flex-col gap-4">
+                <h3 class="text-xl font-bold text-gray-900 dark:text-white mt-4 pb-2 border-b-2 border-primary/30">
+                    ${category}
+                    <span class="text-sm font-normal text-gray-500 dark:text-gray-400 ml-2">(${comps.length} năng lực)</span>
+                </h3>
+                ${comps.map(comp => `
+                    <div class="flex flex-col gap-4 p-6 bg-white dark:bg-background-dark rounded-xl border border-gray-200 dark:border-gray-700">
+                        <div>
+                            <h4 class="text-lg font-bold text-gray-900 dark:text-white">${comp.name}</h4>
+                            <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">${comp.description}</p>
+                        </div>
+                        <div class="flex gap-3 flex-wrap">
+                            <button type="button" class="level-btn px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 hover:border-primary" data-level="1" data-comp="${comp.id}">
+                                <span class="text-sm font-medium">1</span>
+                            </button>
+                            <button type="button" class="level-btn px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 hover:border-primary" data-level="2" data-comp="${comp.id}">
+                                <span class="text-sm font-medium">2</span>
+                            </button>
+                            <button type="button" class="level-btn px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 hover:border-primary" data-level="3" data-comp="${comp.id}">
+                                <span class="text-sm font-medium">3</span>
+                            </button>
+                            <button type="button" class="level-btn px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 hover:border-primary" data-level="4" data-comp="${comp.id}">
+                                <span class="text-sm font-medium">4</span>
+                            </button>
+                        </div>
+                        <textarea placeholder="Nhận xét (tùy chọn)" class="comment-input w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-primary/50" data-comp="${comp.id}" rows="2"></textarea>
+                    </div>
+                `).join('')}
             </div>
         `).join('');
 
-        console.log(`✅ Displayed ${competencies.length} competencies for assessment`);
+        console.log(`✅ Displayed ${competencies.length} competencies in ${Object.keys(groupedCompetencies).length} categories`);
 
         // Setup level button listeners
         formSection.querySelectorAll('.level-btn').forEach(btn => {
@@ -220,11 +254,21 @@
             };
             return {
                 name: comp?.name,
+                category: comp?.category || 'Khác',
                 level: level,
                 levelName: `Level ${level}`,
                 levelColor: levelColors[level],
                 comment: textarea?.value || 'Không có nhận xét'
             };
+        });
+
+        // Group rated competencies by category
+        const groupedRatedComps = {};
+        ratedCompetencies.forEach(comp => {
+            if (!groupedRatedComps[comp.category]) {
+                groupedRatedComps[comp.category] = [];
+            }
+            groupedRatedComps[comp.category].push(comp);
         });
 
         const avgScore = Math.round(Object.values(competencyRatings).reduce((a, b) => a + parseInt(b), 0) / Object.keys(competencyRatings).length * 100) / 100;
@@ -259,22 +303,30 @@
                         </div>
                     </div>
 
-                    <!-- Competencies List - Grid 3 columns -->
+                    <!-- Competencies List - Grouped by Category -->
                     <div>
-                        <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-3">Chi tiết đánh giá</h3>
-                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
-                            ${ratedCompetencies.map(comp => `
-                                <div class="p-3 border border-gray-200 dark:border-gray-700 rounded-lg">
-                                    <div class="flex items-start justify-between mb-2">
-                                        <h4 class="font-semibold text-sm text-gray-900 dark:text-white flex-1 pr-2">${comp.name}</h4>
-                                        <span class="inline-flex items-center rounded-full px-2 py-0.5 text-xs font-semibold ${comp.levelColor} whitespace-nowrap">
-                                            ${comp.levelName}
-                                        </span>
-                                    </div>
-                                    ${comp.comment && comp.comment !== 'Không có nhận xét' ? `<p class="text-xs text-gray-600 dark:text-gray-400 italic line-clamp-2">${comp.comment}</p>` : '<p class="text-xs text-gray-400 dark:text-gray-500 italic">Không có nhận xét</p>'}
+                        <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">Chi tiết đánh giá</h3>
+                        ${Object.entries(groupedRatedComps).map(([category, comps]) => `
+                            <div class="mb-6">
+                                <h4 class="text-base font-bold text-gray-900 dark:text-white mb-3 pb-2 border-b border-gray-200 dark:border-gray-700">
+                                    ${category}
+                                    <span class="text-sm font-normal text-gray-500 dark:text-gray-400 ml-2">(${comps.length} năng lực)</span>
+                                </h4>
+                                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+                                    ${comps.map(comp => `
+                                        <div class="p-3 border border-gray-200 dark:border-gray-700 rounded-lg">
+                                            <div class="flex items-start justify-between mb-2">
+                                                <h5 class="font-semibold text-sm text-gray-900 dark:text-white flex-1 pr-2">${comp.name}</h5>
+                                                <span class="inline-flex items-center rounded-full px-2 py-0.5 text-xs font-semibold ${comp.levelColor} whitespace-nowrap">
+                                                    ${comp.levelName}
+                                                </span>
+                                            </div>
+                                            ${comp.comment && comp.comment !== 'Không có nhận xét' ? `<p class="text-xs text-gray-600 dark:text-gray-400 italic line-clamp-2">${comp.comment}</p>` : '<p class="text-xs text-gray-400 dark:text-gray-500 italic">Không có nhận xét</p>'}
+                                        </div>
+                                    `).join('')}
                                 </div>
-                            `).join('')}
-                        </div>
+                            </div>
+                        `).join('')}
                     </div>
                 </div>
 

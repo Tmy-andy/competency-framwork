@@ -14,10 +14,33 @@ class CompetencyManager {
      */
     async initialize() {
         try {
-            const response = await fetch('data.json');
-            this.data = await response.json();
+            // Load Barista competencies from competencies-barista.json
+            const response = await fetch('competencies-barista.json');
+            const competencies = await response.json();
+            
+            // Transform to expected format if needed
+            this.data = {
+                competencies: competencies.map(comp => ({
+                    id: comp.id,
+                    name: comp.name || comp.nameVi,
+                    nameVi: comp.nameVi || comp.name,
+                    category: comp.category,
+                    description: comp.definition,
+                    proficiencyLevels: [
+                        { name: 'Level 1', description: comp.level1 },
+                        { name: 'Level 2', description: comp.level2 },
+                        { name: 'Level 3', description: comp.level3 },
+                        { name: 'Level 4', description: comp.level4 }
+                    ],
+                    trainingMethod: comp.trainingMethod,
+                    evidence: comp.evidence
+                })),
+                employees: [], // Will be loaded separately
+                assessments: []
+            };
+            
             this.initialized = true;
-            console.log('✅ Competency Manager initialized');
+            console.log(`✅ Competency Manager initialized with ${this.data.competencies.length} Barista competencies`);
             return true;
         } catch (error) {
             console.error('❌ Error loading data:', error);

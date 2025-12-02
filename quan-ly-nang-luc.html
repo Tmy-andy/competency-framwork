@@ -63,24 +63,31 @@
             tbody.innerHTML = '';
 
             filteredCompetencies.forEach((comp, index) => {
+                
                 // Main row
                 const row = document.createElement('tr');
                 row.className = 'hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors';
                 row.innerHTML = `
-                    <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm text-gray-500">
+                    <td class="py-4 pl-4 pr-3 text-sm text-gray-500">
                         <button class="expand-btn" data-index="${index}">
                             <span class="material-symbols-outlined chevron-icon text-gray-400 hover:text-gray-600">chevron_right</span>
                         </button>
                     </td>
-                    <td class="whitespace-nowrap px-4 py-4 text-sm font-medium text-gray-900 dark:text-white">${comp.name}</td>
-                    <td class="whitespace-nowrap px-4 py-4 text-sm text-gray-500 dark:text-gray-400">${comp.category || 'Năng lực chung'}</td>
-                    <td class="whitespace-nowrap px-4 py-4 text-sm text-gray-500 dark:text-gray-400 max-w-sm truncate">${comp.description || ''}</td>
-                    <td class="whitespace-nowrap py-4 pl-4 pr-4 text-sm font-medium sm:pr-6">
-                        <div class="flex items-center gap-4">
-                            <button class="edit-btn text-primary hover:text-primary/80" data-id="${comp.id}" title="Edit">
+                    <td class="px-4 py-4 text-sm font-medium text-gray-900 dark:text-white">
+                        <div class="line-clamp-2" title="${comp.name}">${comp.name}</div>
+                    </td>
+                    <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-400">
+                        <div class="line-clamp-2" title="${comp.category || ''}">${comp.category || ''}</div>
+                    </td>
+                    <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-400">
+                        <div class="line-clamp-2" title="${comp.description || ''}">${comp.description || ''}</div>
+                    </td>
+                    <td class="py-4 pl-4 pr-4 text-sm font-medium sm:pr-6">
+                        <div class="flex items-center justify-center gap-3">
+                            <button class="edit-btn text-primary hover:text-primary/80" data-id="${comp.id}" title="Chỉnh sửa">
                                 <span class="material-symbols-outlined">edit</span>
                             </button>
-                            <button class="delete-btn text-red-600 hover:text-red-500" data-id="${comp.id}" title="Delete">
+                            <button class="delete-btn text-red-600 hover:text-red-500" data-id="${comp.id}" title="Xóa">
                                 <span class="material-symbols-outlined">delete</span>
                             </button>
                         </div>
@@ -206,9 +213,10 @@
                             <div>
                                 <label class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">Nhóm Năng Lực</label>
                                 <select class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary/50 focus:border-transparent text-sm" data-field="category" required>
-                                    <option value="General Competency" ${comp.category === 'General Competency' ? 'selected' : ''}>Năng lực chung</option>
-                                    <option value="Technical Competency" ${comp.category === 'Technical Competency' ? 'selected' : ''}>Năng lực kỹ thuật</option>
-                                    <option value="Leadership" ${comp.category === 'Leadership' ? 'selected' : ''}>Năng lực lãnh đạo</option>
+                                    <option value="Technical / Operational" ${comp.category === 'Technical / Operational' ? 'selected' : ''}>Technical / Operational</option>
+                                    <option value="Behavioral/ Performance competencies" ${comp.category === 'Behavioral/ Performance competencies' ? 'selected' : ''}>Behavioral/ Performance competencies</option>
+                                    <option value="Hygiene & Bar Standards" ${comp.category === 'Hygiene & Bar Standards' ? 'selected' : ''}>Hygiene & Bar Standards</option>
+                                    <option value="Leadership & Personal Development/ Other Skills" ${comp.category === 'Leadership & Personal Development/ Other Skills' ? 'selected' : ''}>Leadership & Personal Development/ Other Skills</option>
                                 </select>
                             </div>
                         </div>
@@ -314,9 +322,10 @@
                                 <label class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">Nhóm Năng Lực <span class="text-red-500">*</span></label>
                                 <select class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary/50 focus:border-transparent text-sm" data-field="category" required>
                                     <option value="">-- Chọn nhóm --</option>
-                                    <option value="General Competency">Năng lực chung</option>
-                                    <option value="Technical Competency">Năng lực kỹ thuật</option>
-                                    <option value="Leadership">Năng lực lãnh đạo</option>
+                                    <option value="Technical / Operational">Technical / Operational</option>
+                                    <option value="Behavioral/ Performance competencies">Behavioral/ Performance competencies</option>
+                                    <option value="Hygiene & Bar Standards">Hygiene & Bar Standards</option>
+                                    <option value="Leadership & Personal Development/ Other Skills">Leadership & Personal Development/ Other Skills</option>
                                 </select>
                             </div>
                         </div>
@@ -557,17 +566,17 @@
                         <div class="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
                             <div class="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
                                 <div class="overflow-hidden rounded-xl border border-gray-200 dark:border-gray-800">
-                                    <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-800">
+                                    <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-800 table-fixed">
                                         <thead class="bg-gray-50 dark:bg-gray-800">
                                             <tr>
                                                 <th class="w-12" scope="col"></th>
-                                                <th class="px-4 py-3.5 text-left text-sm font-semibold text-gray-900 dark:text-white"
+                                                <th class="w-[25%] px-4 py-3.5 text-left text-sm font-semibold text-gray-900 dark:text-white"
                                                     scope="col">Tên Năng Lực</th>
-                                                <th class="px-4 py-3.5 text-left text-sm font-semibold text-gray-900 dark:text-white"
+                                                <th class="w-[20%] px-4 py-3.5 text-left text-sm font-semibold text-gray-900 dark:text-white"
                                                     scope="col">Nhóm Năng Lực</th>
-                                                <th class="px-4 py-3.5 text-left text-sm font-semibold text-gray-900 dark:text-white"
+                                                <th class="w-[40%] px-4 py-3.5 text-left text-sm font-semibold text-gray-900 dark:text-white"
                                                     scope="col">Mô Tả Ngắn</th>
-                                                <th class="relative py-3.5 pl-4 pr-4 sm:pr-6 text-left text-sm font-semibold text-gray-900 dark:text-white"
+                                                <th class="w-[15%] py-3.5 pl-4 pr-4 sm:pr-6 text-center text-sm font-semibold text-gray-900 dark:text-white"
                                                     scope="col">Hành Động</th>
                                             </tr>
                                         </thead>
